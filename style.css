@@ -1,0 +1,348 @@
+﻿/* --- Global Reset & Fonts --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+/* --- Box Grid Layout --- */
+.box-grid {
+    display: grid;
+    /* Creates responsive columns automatically */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Minimalist Box Design --- */
+.box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    text-decoration: none;
+    color: inherit;
+    min-height: 180px;
+}
+
+/* Box Header */
+.box-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Icon (Logo) */
+.box-icon {
+    font-size: 2.5rem;
+}
+
+/* Box Title */
+.box-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* Box Stats Container */
+.box-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.stat-group h4 {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #0f172a;
+    font-weight: 500;
+    background: #f8fafc;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+}
+
+.stat-row span.label {
+    color: #475569;
+}
+
+/* --- Inner Page Navigation Styling --- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.back-link {
+    color: #2563eb;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.active-path {
+    color: #0f172a;
+}
+
+.module-content {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+}
+
+/* --- Dashboard Settings UI --- */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e2e8f0;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.dashboard-header .main-title {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.settings-btn {
+    background: none;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0.5rem 0.8rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.settings-btn span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Settings Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.settings-modal {
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.settings-modal h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: #334155;
+    cursor: pointer;
+}
+
+/* Modern Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+input:checked + .slider {
+  background-color: #2563eb;
+}
+
+input:checked + .slider:before {
+}
+
+.toggle-label {
+    font-weight: 500;
+}
+
+.modal-close-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.hidden-widget {
+    display: none !important;
+}
+
+/* --- Big Metric Typography --- */
+.box-header-tools {
+    margin-left: auto;
+}
+
+.box-header-tools input[type="date"] {
+    padding: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.85rem;
+    outline: none;
+    color: #334155;
+}
+
+.big-stat-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.big-metric-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.big-metric-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #2563eb;
+    line-height: 1;
+}
+
+.big-metric-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    text-
+    margin-top: 0.4rem;
+}
+
+.secondary-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 1rem;
+    border-left: 2px solid #e2e8f0;
+}
+
+.secondary-metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.secondary-metric .val {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.secondary-metric .lbl {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    text-
+}

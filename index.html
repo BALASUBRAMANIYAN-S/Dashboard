@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dist/output.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+<body>
+    <div id="main-dashboard" class="container">
+        <div class="dashboard-header">
+            <h1 class="main-title">Overall Dashboard</h1>
+            <button class="settings-btn" onclick="openSettings()">
+                <span><i class="mdi mdi-cog"></i> Settings</span>
+            </button>
+        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-2">
+            <!-- Student Attendance -->
+            <a href="attendance/student-attendance.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="student-attendance">
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl"><i class="mdi mdi-school text-blue-500"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Student Attendance</span>
+                    </div>
+                    <div onclick="event.preventDefault();">
+                        <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'student')">
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-auto">
+                    <div>
+                        <div class="text-5xl font-bold text-emerald-500 leading-none" id="student-present-val">2456</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                    </div>
+                    <div class="flex flex-col gap-2 border-l border-slate-100 pl-4 w-36">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Total</span>
+                            <span class="font-bold text-slate-800" id="student-total-val">2600</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Absentees</span>
+                            <span class="font-bold text-rose-400" id="student-absent-val">112</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">ODs</span>
+                            <span class="font-bold text-slate-800" id="student-od-val">32</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Staff Attendance -->
+            <a href="attendance/staff-attendance.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="staff-attendance">
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                    <div class="flex items-center gap-3">
+                        <span class="text-3xl"><i class="mdi mdi-human-male-board text-indigo-500"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Staff Attendance</span>
+                    </div>
+                    <div onclick="event.preventDefault();">
+                        <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'staff')">
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-auto">
+                    <div>
+                        <div class="text-5xl font-bold text-emerald-500 leading-none" id="staff-present-val">450</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                    </div>
+                    <div class="flex flex-col gap-2 border-l border-slate-100 pl-4 w-36">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Total</span>
+                            <span class="font-bold text-slate-800" id="staff-total-val">550</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">Absentees</span>
+                            <span class="font-bold text-rose-400" id="staff-absent-val">60</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-slate-500">CLs</span>
+                            <span class="font-bold text-slate-800" id="staff-cl-val">40</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Hostel -->
+            <a href="hostel/hostel.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="hostel">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-office-building text-sky-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Hostel</span>
+                </div>
+                <div class="flex justify-between items-center text-center mt-auto px-2">
+                    <div>
+                        <div class="text-3xl font-bold text-blue-500">850</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-1">Boys</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-pink-500">465</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-1">Girls</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-500">124</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-1">Available</div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Transport -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="transport">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-bus text-yellow-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Transport</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Fleet Status</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Total Buses:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Active Routes:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Participants & Achievements -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="participants">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-trophy text-amber-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Participants & Achievements</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Summary</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Recent Events:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Total Awards:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Publication & Research -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="research">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-microscope text-violet-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Publication & Research</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Data</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Publications:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Active Grants:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- IT Asset -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="it-asset">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-laptop text-emerald-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">IT Asset</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Inventory</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Total Assets:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Maintenance:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Service & Bookings -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="service">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl">🛎️</span>
+                    <span class="text-lg font-semibold text-slate-700">Service & Bookings</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Requests</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Open Tickets:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Today's Bookings:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Supervisor & Scholars -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="scholars">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-certificate text-purple-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Supervisor & Scholars</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Academics</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Registered Scholars:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Supervisors:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Graduates -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="graduates">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl">📜</span>
+                    <span class="text-lg font-semibold text-slate-700">Graduates</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Records</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Total Alumni:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Recent Grads:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Career Applications -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="career">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-briefcase text-cyan-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Career Applications</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Placements</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">New Applications:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Interviews:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Consultancy & MOUs -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="mou">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-handshake text-rose-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Consultancy & MOUs</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Partnerships</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Active MOUs:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Ongoing Projects:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Library Books -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="library">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-book-open-page-variant text-fuchsia-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Library Books</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Resources</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Total Books:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Issued Today:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Gate -->
+            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="gate">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="text-3xl"><i class="mdi mdi-door text-stone-500"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">Gate</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Security Logs</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Visitors Today:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Vehicles Passed:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Inner Module Placeholder -->
+    <div id="inner-module" class="container" style="display: none;">
+        <nav class="breadcrumb">
+            <span class="back-link" onclick="goBack()">Dashboard</span> 
+            <span>/</span> 
+            <span id="current-module-name" class="active-path">Module Name</span>
+            <span>/</span>
+        </nav>
+
+        <h1 id="module-title" class="main-title">Module Title</h1>
+        
+        <div class="module-content">
+            <p>This is where we will build the specific features for this module step-by-step.</p>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settings-overlay">
+        <div class="settings-modal">
+            <h2>Dashboard Settings</h2>
+            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">Select which widgets you want to see on your dashboard.</p>
+            <div class="settings-list" id="settings-list">
+                <!-- Checkboxes populated via JS -->
+            </div>
+            <button class="modal-close-btn" onclick="closeSettings()">Save & Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openModule(moduleName) {
+            document.getElementById('main-dashboard').style.display = 'none';
+            document.getElementById('inner-module').style.display = 'block';
+            document.getElementById('current-module-name').innerText = moduleName;
+            document.getElementById('module-title').innerText = moduleName;
+        }
+
+        function goBack() {
+            document.getElementById('inner-module').style.display = 'none';
+            document.getElementById('main-dashboard').style.display = 'block';
+        }
+
+        // Setup Date Pickers and Settings
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInputs = document.querySelectorAll('.dashboard-date');
+            dateInputs.forEach(input => {
+                input.valueAsDate = new Date();
+            });
+            initSettings();
+        });
+
+        function updateMockData(input, type) {
+            // Randomly slightly alter the mock numbers when date changes
+            const valEl = document.getElementById(type + '-present-val');
+            const totalEl = document.getElementById(type + '-total-val');
+            const absentEl = document.getElementById(type + '-absent-val');
+            
+            // For students it's ODs, for staff it's CLs
+            const otherEl = document.getElementById(type + (type === 'student' ? '-od-val' : '-cl-val'));
+            
+            let currentVal = parseInt(valEl.innerText);
+            let change = Math.floor(Math.random() * 11) - 5;
+            let newPresent = currentVal + change;
+            
+            let total = parseInt(totalEl.innerText);
+            let other = parseInt(otherEl.innerText);
+            
+            // Ensure bounds
+            if (newPresent > total - other) newPresent = total - other;
+            if (newPresent < 0) newPresent = 0;
+            
+            valEl.innerText = newPresent;
+            if(absentEl) {
+                absentEl.innerText = total - newPresent - other;
+            }
+        }
+
+        // Settings Logic
+        const WIDGET_NAMES = {
+            'student-attendance': 'Student Attendance',
+            'staff-attendance': 'Staff Attendance',
+            'hostel': 'Hostel',
+            'transport': 'Transport',
+            'participants': 'Participants & Achievements',
+            'research': 'Publication & Research',
+            'it-asset': 'IT Asset',
+            'service': 'Service & Bookings',
+            'scholars': 'Supervisor & Scholars',
+            'graduates': 'Graduates',
+            'career': 'Career Applications',
+            'mou': 'Consultancy & MOUs',
+            'library': 'Library Books',
+            'gate': 'Gate'
+        };
+
+        function initSettings() {
+            const listEl = document.getElementById('settings-list');
+            listEl.innerHTML = '';
+
+            Object.keys(WIDGET_NAMES).forEach(id => {
+                const isHidden = localStorage.getItem('hide_widget_' + id) === 'true';
+                
+                const boxEl = document.querySelector(`.box[data-widget-id="${id}"]`);
+                if(boxEl && isHidden) {
+                    boxEl.classList.add('hidden-widget');
+                }
+
+                const item = document.createElement('div');
+                item.className = 'setting-item';
+                
+                // Toggle Switch Container
+                const switchLabel = document.createElement('label');
+                switchLabel.className = 'switch';
+
+                const cb = document.createElement('input');
+                cb.type = 'checkbox';
+                cb.id = 'cb_' + id;
+                cb.checked = !isHidden;
+                cb.onchange = () => toggleWidget(id, cb.checked);
+
+                const slider = document.createElement('span');
+                slider.className = 'slider';
+
+                switchLabel.appendChild(cb);
+                switchLabel.appendChild(slider);
+
+                const textLabel = document.createElement('label');
+                textLabel.htmlFor = 'cb_' + id;
+                textLabel.innerText = WIDGET_NAMES[id];
+                textLabel.style.cursor = 'pointer';
+                textLabel.className = 'toggle-label';
+
+                item.appendChild(switchLabel);
+                item.appendChild(textLabel);
+                listEl.appendChild(item);
+            });
+        }
+
+        function toggleWidget(id, show) {
+            const boxEl = document.querySelector(`.box[data-widget-id="${id}"]`);
+            if (boxEl) {
+                if (show) {
+                    boxEl.classList.remove('hidden-widget');
+                    localStorage.removeItem('hide_widget_' + id);
+                } else {
+                    boxEl.classList.add('hidden-widget');
+                    localStorage.setItem('hide_widget_' + id, 'true');
+                }
+            }
+        }
+
+        function openSettings() {
+            document.getElementById('settings-overlay').classList.add('active');
+        }
+
+        function closeSettings() {
+            document.getElementById('settings-overlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

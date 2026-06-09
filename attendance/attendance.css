@@ -1,0 +1,90 @@
+﻿/* --- Global Reset & Fonts --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 0 10px;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+/* --- Box Grid Layout --- */
+.box-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Minimalist Box Design (Now functioning as links) --- */
+.box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    min-height: 180px;
+    text-decoration: none; /* Removes link underline */
+    color: inherit; /* Keeps text color normal */
+}
+
+.box-icon {
+    font-size: 3.5rem; /* Made slightly larger for impact */
+    margin-bottom: 1rem;
+}
+
+.box-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.3;
+}
+
+/* --- Navigation / Breadcrumb Styling --- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb a.back-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.separator {
+    color: #cbd5e1;
+}
+
+.active-path {
+    color: #0f172a;
+    font-weight: 700;
+}

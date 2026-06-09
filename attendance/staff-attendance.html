@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Attendance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="student-attendance.css">
+    <link rel="stylesheet" href="../dist/output.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <nav class="breadcrumb">
+            <a href="../index.html" class="back-link">Dashboard</a> 
+            <span class="separator">/</span> 
+            <span class="active-path">Staff Attendance</span>
+        </nav>
+
+        <h1 class="main-title">Overall Staff Attendance</h1>
+
+        <!-- Section 1: Demographics Overview Top -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-bottom: 1rem; font-weight: 600;">Staff Demographics</h2>
+        <div class="metrics-grid" style="margin-bottom: 2.5rem;">
+            <div class="metric-card" style="border-top-color: #3b82f6;">
+                <div class="metric-title">Total Staff</div>
+                <div class="metric-value">550</div>
+                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-tot-present">✓ 450 Present</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-tot-vac" onclick="openDetailsModal('Total Vacation', 45)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">45 Vacation &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-tot-cl" onclick="openDetailsModal('Total CL', 25)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">25 CL &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-tot-compoff" onclick="openDetailsModal('Total Compoff', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 Compoff &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-tot-lob" onclick="openDetailsModal('Total LOB', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
+                </div>
+            </div>
+            <div class="metric-card" style="border-top-color: #8b5cf6;">
+                <div class="metric-title">Teaching</div>
+                <div class="metric-value">400</div>
+                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-teach-present">✓ 320 Present</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-teach-vac" onclick="openDetailsModal('Teaching Vacation', 35)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">35 Vacation &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-teach-cl" onclick="openDetailsModal('Teaching CL', 20)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">20 CL &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-teach-compoff" onclick="openDetailsModal('Teaching Compoff', 10)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">10 Compoff &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-teach-lob" onclick="openDetailsModal('Teaching LOB', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
+                </div>
+            </div>
+            <div class="metric-card" style="border-top-color: #ec4899;">
+                <div class="metric-title">Non-Teaching</div>
+                <div class="metric-value">150</div>
+                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-non-present">✓ 130 Present</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-non-vac" onclick="openDetailsModal('Non-Teaching Vacation', 10)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">10 Vacation &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-non-cl" onclick="openDetailsModal('Non-Teaching CL', 5)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">5 CL &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-non-compoff" onclick="openDetailsModal('Non-Teaching Compoff', 5)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">5 Compoff &rarr;</div>
+                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-non-lob" onclick="openDetailsModal('Non-Teaching LOB', 0)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">0 LOB &rarr;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Select Filters Second -->
+        <div class="filter-panel">
+            <div class="filter-group">
+                <label>Staff Type</label>
+                <select id="type-select" onchange="onTypeChange()">
+                    <option value="">All Types</option>
+                    <option value="Teaching">Teaching (Faculty)</option>
+                    <option value="Non-Teaching">Non-Teaching</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Department</label>
+                <select id="department-select" onchange="randomizeCards()">
+                    <option value="">All Departments</option>
+                    <!-- Populated via JS -->
+                </select>
+            </div>
+
+
+
+            <div class="filter-group" id="dynamic-date-wrapper">
+                <label id="date-label">Select Date</label>
+                <input type="date" id="date-input" onchange="randomizeCards()">
+            </div>
+        </div>
+
+
+
+    <script>
+        const deptMap = {
+            'Teaching': ['CS', 'BS', 'CE', 'ME', 'EE', 'EC', 'BM', 'CH', 'AD', 'IT'],
+            'Non-Teaching': ['ITSIM', 'PrincipleOffice', 'AO team']
+        };
+
+        function populateAllDepartments() {
+            const deptSelect = document.getElementById('department-select');
+            deptSelect.innerHTML = '<option value="">All Departments</option>';
+            let allDepts = [].concat(deptMap['Teaching'], deptMap['Non-Teaching']);
+            allDepts.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.innerText = d;
+                deptSelect.appendChild(opt);
+            });
+        }
+
+        function onTypeChange() {
+            const type = document.getElementById('type-select').value;
+            const deptSelect = document.getElementById('department-select');
+            
+            deptSelect.innerHTML = '<option value="">All Departments</option>';
+            
+            if (type === '') {
+                populateAllDepartments();
+            } else {
+                const allowedDepts = deptMap[type];
+                allowedDepts.forEach(d => {
+                    const opt = document.createElement('option');
+                    opt.value = d;
+                    opt.innerText = d;
+                    deptSelect.appendChild(opt);
+                });
+            }
+            randomizeCards();
+        }
+
+        function randomizeCards() {
+            const type = document.getElementById('type-select').value;
+            const dept = document.getElementById('department-select').value;
+            
+            // Calculate Base Total dynamically based on selected filters
+            let baseTotal = 550;
+            if (dept !== '') {
+                baseTotal = 40; // Approx 40 staff per department
+            } else if (type === 'Teaching') {
+                baseTotal = 400;
+            } else if (type === 'Non-Teaching') {
+                baseTotal = 150;
+            }
+
+            // --- Update Top Demographics (Always Global for the Date) ---
+            const gBase = baseTotal; // Use the filtered total as the primary baseline for the view
+            
+            // To keep things simple and completely clean, we distribute the mock numbers 
+            // for the current base. (This replaces the old complex base logic)
+            let gVac = Math.floor(gBase * 0.08) + (Math.floor(Math.random()*3)-1);
+            let gCl = Math.floor(gBase * 0.05) + (Math.floor(Math.random()*3)-1);
+            let gComp = Math.floor(gBase * 0.02) + Math.floor(Math.random()*2);
+            let gLob = Math.floor(gBase * 0.03) + Math.floor(Math.random()*2);
+            if(gVac < 0) gVac = 0; if(gCl < 0) gCl = 0;
+            
+            let gPres = gBase - gVac - gCl - gComp - gLob;
+
+            // Distribute across Teaching/Non-Teaching exactly based on 400/150 split ratio 
+            // ONLY if the user hasn't filtered to a specific type
+            let tBase = type === 'Non-Teaching' ? 0 : (type === 'Teaching' ? baseTotal : 400);
+            let ntBase = type === 'Teaching' ? 0 : (type === 'Non-Teaching' ? baseTotal : 150);
+
+            let tVac = Math.floor(gVac * (tBase / gBase)) || 0;
+            let tCl = Math.floor(gCl * (tBase / gBase)) || 0;
+            let tComp = Math.floor(gComp * (tBase / gBase)) || 0;
+            let tLob = Math.floor(gLob * (tBase / gBase)) || 0;
+            let tPres = tBase - tVac - tCl - tComp - tLob;
+
+            let ntVac = gVac - tVac;
+            let ntCl = gCl - tCl;
+            let ntComp = gComp - tComp;
+            let ntLob = gLob - tLob;
+            let ntPres = ntBase - ntVac - ntCl - ntComp - ntLob;
+
+            document.getElementById('sub-tot-present').innerText = `✓ ${gPres} Present`;
+            document.getElementById('sub-tot-vac').innerHTML = `${gVac} Vacation &rarr;`;
+            document.getElementById('sub-tot-cl').innerHTML = `${gCl} CL &rarr;`;
+            document.getElementById('sub-tot-compoff').innerHTML = `${gComp} Compoff &rarr;`;
+            document.getElementById('sub-tot-lob').innerHTML = `${gLob} LOB &rarr;`;
+
+            document.getElementById('sub-teach-present').innerText = `✓ ${tPres} Present`;
+            document.getElementById('sub-teach-vac').innerHTML = `${tVac} Vacation &rarr;`;
+            document.getElementById('sub-teach-cl').innerHTML = `${tCl} CL &rarr;`;
+            document.getElementById('sub-teach-compoff').innerHTML = `${tComp} Compoff &rarr;`;
+            document.getElementById('sub-teach-lob').innerHTML = `${tLob} LOB &rarr;`;
+
+            document.getElementById('sub-non-present').innerText = `✓ ${ntPres} Present`;
+            document.getElementById('sub-non-vac').innerHTML = `${ntVac} Vacation &rarr;`;
+            document.getElementById('sub-non-cl').innerHTML = `${ntCl} CL &rarr;`;
+            document.getElementById('sub-non-compoff').innerHTML = `${ntComp} Compoff &rarr;`;
+            document.getElementById('sub-non-lob').innerHTML = `${ntLob} LOB &rarr;`;
+        }
+
+        function openDetailsModal(modalType, value) {
+            const staffType = document.getElementById('type-select').value || 'Staff';
+            const dept = document.getElementById('department-select').value || 'All';
+            window.location.href = "student-details.html?type=" + encodeURIComponent(modalType) 
+                + "&count=" + encodeURIComponent(value)
+                + "&program=" + encodeURIComponent(staffType)
+                + "&dept=" + encodeURIComponent(dept);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('date-input');
+            if(dateInput) {
+                dateInput.valueAsDate = new Date();
+            }
+            populateAllDepartments();
+        });
+    </script>
+
+</body>
+</html>

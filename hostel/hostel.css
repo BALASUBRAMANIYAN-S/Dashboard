@@ -1,0 +1,247 @@
+﻿/* --- Tab Navigation --- */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #64748b;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #264e66; /* Match dark teal theme */
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.65rem;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #264e66;
+    border-radius: 3px 3px 0 0;
+}
+
+/* --- Premium Data Table --- */
+.table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Soft subtle shadow */
+    overflow: hidden;
+}
+
+.hostel-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.hostel-table tbody {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.hostel-table th {
+    background-color: #f8fafc;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-
+    letter-spacing: 0.05em;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.hostel-table th.left { text-align: left; }
+.hostel-table th.center { text-align: center; }
+
+.hostel-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.hostel-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hostel-table tbody tr:hover td {
+    background-color: #f8fafc; /* Very light gray hover */
+}
+
+.hostel-table td.center {
+    text-align: center;
+}
+
+/* --- Table Elements --- */
+.room-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #264e66; /* Dark teal */
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /* Rounded rectangle */
+    text-decoration: none;
+}
+
+.room-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.capacity-val {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.pill-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* Percentage Pills */
+.pill {
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.pill-green {
+    background-color: #dcfce7; /* Soft light green */
+    color: #166534; /* Darker green */
+}
+
+.pill-pink {
+    background-color: #fee2e2; /* Soft light pink */
+    color: #991b1b; /* Dark red */
+}
+
+/* --- Details Modal (Copied from Student Attendance) --- */
+.details-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.details-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.details-modal {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 650px; /* Made slightly wider for the two sections */
+    padding: 2rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.details-overlay.active .details-modal {
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.details-header h3 {
+    font-size: 1.3rem;
+    color: #1e293b;
+}
+
+.details-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+/* Modal Inner Mini-Grid */
+.modal-metrics-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.modal-metric-card {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.modal-metric-val {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.modal-metric-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64748b;
+    text-
+    margin-top: 0.2rem;
+}
+
+/* Modal Table */
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.details-table th, .details-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+}
+
+.details-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+}

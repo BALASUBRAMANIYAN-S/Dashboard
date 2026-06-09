@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="student-attendance.css">
+    <link rel="stylesheet" href="../dist/output.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <nav class="breadcrumb">
+            <a href="../index.html" class="back-link">Dashboard</a> 
+            <span class="separator">/</span> 
+            <span class="active-path">Student Attendance</span>
+        </nav>
+
+        <h1 class="main-title">Overall Student Attendance</h1>
+
+        <!-- Section 1: Demographics Overview Top -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-bottom: 1rem; font-weight: 600;">Demographics Overview</h2>
+        <div class="metrics-grid" style="margin-bottom: 2.5rem;">
+            <div class="metric-card">
+                <div class="metric-title">Total Students</div>
+                <div class="metric-value">2600</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: #10b981; margin-top: 0.2rem;" id="sub-total-present">✓ 2456 Present</div>
+                <div style="display: flex; gap: 1rem; margin-top: 0.6rem; border-top: 1px solid #f1f5f9; padding-top: 0.6rem;">
+                    <div id="sub-total-absent" style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; " onclick="openDetailsModal('Absent', 112)">
+                        112 Absent &rarr;
+                    </div>
+                    <div id="sub-total-od" style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; " onclick="openDetailsModal('OD', 32)">
+                        32 OD &rarr;
+                    </div>
+                </div>
+            </div>
+            <div class="metric-card" style="border-top-color: #8b5cf6;">
+                <div class="metric-title">UG Students</div>
+                <div class="metric-value">2200</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: #10b981; margin-top: 0.2rem;" id="sub-ug-present">✓ 2080 Present</div>
+                <div style="display: flex; gap: 1rem; margin-top: 0.6rem; border-top: 1px solid #f1f5f9; padding-top: 0.6rem;">
+                    <div id="sub-ug-absent" style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; " onclick="openDetailsModal('UG Absent', 90)">
+                        90 Absent &rarr;
+                    </div>
+                    <div id="sub-ug-od" style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; " onclick="openDetailsModal('UG OD', 30)">
+                        30 OD &rarr;
+                    </div>
+                </div>
+            </div>
+            <div class="metric-card" style="border-top-color: #ec4899;">
+                <div class="metric-title">PG Students</div>
+                <div class="metric-value">350</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: #10b981; margin-top: 0.2rem;" id="sub-pg-present">✓ 330 Present</div>
+                <div style="display: flex; gap: 1rem; margin-top: 0.6rem; border-top: 1px solid #f1f5f9; padding-top: 0.6rem;">
+                    <div id="sub-pg-absent" style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; " onclick="openDetailsModal('PG Absent', 18)">
+                        18 Absent &rarr;
+                    </div>
+                    <div id="sub-pg-od" style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; " onclick="openDetailsModal('PG OD', 2)">
+                        2 OD &rarr;
+                    </div>
+                </div>
+            </div>
+            <div class="metric-card" style="border-top-color: #06b6d4;">
+                <div class="metric-title">Scholars</div>
+                <div class="metric-value">50</div>
+                <div style="font-size: 0.9rem; font-weight: 600; color: #10b981; margin-top: 0.2rem;" id="sub-scholar-present">✓ 46 Present</div>
+                <div style="display: flex; gap: 1rem; margin-top: 0.6rem; border-top: 1px solid #f1f5f9; padding-top: 0.6rem;">
+                    <div id="sub-scholar-absent" style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; " onclick="openDetailsModal('Scholar Absent', 4)">
+                        4 Absent &rarr;
+                    </div>
+                    <div id="sub-scholar-od" style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; " onclick="openDetailsModal('Scholar OD', 0)">
+                        0 OD &rarr;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Filters Panel Second -->
+        <div class="filter-panel">
+            
+            <div class="filter-group">
+                <label>Program</label>
+                <select id="program-select" onchange="onProgramChange()">
+                    <option value="">All Programs</option>
+                    <option value="UG">UG</option>
+                    <option value="PG">PG</option>
+                    <option value="Scholar">Scholar</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Department</label>
+                <select id="department-select" onchange="onFilterChange()">
+                    <option value="">All Departments</option>
+                    <option value="CS">CS</option>
+                    <option value="BS">BS</option>
+                    <option value="CE">CE</option>
+                    <option value="ME">ME</option>
+                    <option value="EE">EE</option>
+                    <option value="EC">EC</option>
+                    <option value="BM">BM</option>
+                    <option value="CH">CH</option>
+                    <option value="AD">AD</option>
+                    <option value="IT">IT</option>
+                    <option value="CB">CB</option>
+                    <option value="VL">VL</option>
+                    <option value="MBA">MBA</option>
+                    <option value="PHDSH">PHDSH</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Academic Year</label>
+                <select id="year-select" onchange="onFilterChange()">
+                    <option value="All Years">All Years</option>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                </select>
+            </div>
+
+
+
+            <div class="filter-group" id="dynamic-date-wrapper">
+                <label id="date-label">Select Date</label>
+                <input type="date" id="date-input" onchange="randomizeStats()">
+            </div>
+            
+        </div>
+
+        <!-- Section 4: Timetable Bottom -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600;">Period-wise Timetable</h2>
+        <div class="timetable-wrapper">
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Timeframe</th>
+                        <th>Mentor Hour</th>
+                        <th>Period 1</th>
+                        <th>Period 2</th>
+                        <th>Period 3</th>
+                        <th>Period 4</th>
+                        <th>Period 5</th>
+                        <th>Period 6</th>
+                        <th>Period 7</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+                    <!-- Rows generated via JS -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+        const deptMap = {
+            'UG': ['CS', 'BS', 'CE', 'ME', 'EE', 'EC', 'BM', 'CH', 'AD', 'IT'],
+            'PG': ['CB', 'VL', 'MBA'],
+            'Scholar': ['PHDSH']
+        };
+
+        function onProgramChange() {
+            const prog = document.getElementById('program-select').value;
+            const deptSelect = document.getElementById('department-select');
+            const yearSelect = document.getElementById('year-select');
+            
+            deptSelect.innerHTML = '<option value="">All Departments</option>';
+            // Reset academic year when program changes to avoid invalid states
+            yearSelect.value = 'All Years';
+            
+            let allowedDepts = [];
+            if (prog === '') {
+                allowedDepts = [].concat(deptMap['UG'], deptMap['PG'], deptMap['Scholar']);
+            } else {
+                allowedDepts = deptMap[prog];
+            }
+            
+            allowedDepts.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.innerText = d;
+                deptSelect.appendChild(opt);
+            });
+            
+            updateTimetableRows();
+            randomizeCards();
+        }
+
+        function onFilterChange() {
+            updateTimetableRows();
+            randomizeCards();
+        }
+
+        function changeDateInput(type) {
+            const wrapper = document.getElementById('dynamic-date-wrapper');
+            if (type === 'date') {
+                wrapper.innerHTML = `<label id="date-label">Select Date</label><input type="date" id="date-input" onchange="randomizeCardsAndTimetable()">`;
+                document.getElementById('date-input').valueAsDate = new Date();
+            } else if (type === 'week') {
+                wrapper.innerHTML = `<label id="date-label">Select Week</label><input type="week" id="date-input" onchange="randomizeCardsAndTimetable()">`;
+            } else if (type === 'month') {
+                wrapper.innerHTML = `<label id="date-label">Select Month</label><input type="month" id="date-input" onchange="randomizeCardsAndTimetable()">`;
+            }
+            randomizeCardsAndTimetable();
+        }
+
+        function getParentProgram(dept) {
+            for (const [prog, depts] of Object.entries(deptMap)) {
+                if (depts.includes(dept)) return prog;
+            }
+            return 'UG'; // Fallback
+        }
+
+        function updateTimetableRows() {
+            let prog = document.getElementById('program-select').value;
+            const dept = document.getElementById('department-select').value;
+            const year = document.getElementById('year-select').value;
+            const tbody = document.getElementById('timetable-body');
+            
+            // Auto-detect parent program if a department is selected but program is not
+            if (dept !== '' && prog === '') {
+                prog = getParentProgram(dept);
+            }
+            
+            let rowsToGenerate = [];
+            
+            if (dept !== '') {
+                // Specific department is selected
+                if (year !== 'All Years') {
+                    // Both Department and Year are selected -> 1 Row
+                    rowsToGenerate.push(dept + ' (' + year + ')');
+                } else {
+                    // Department selected, Year is "All" -> Break down by years
+                    if (prog === 'UG') {
+                        rowsToGenerate = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+                    } else if (prog === 'PG') {
+                        rowsToGenerate = ['1st Year', '2nd Year'];
+                    } else {
+                        rowsToGenerate = [dept];
+                    }
+                }
+            } else {
+                // All Departments
+                let displayDepts = [];
+                if (prog === '') {
+                    displayDepts = [].concat(deptMap['UG'], deptMap['PG'], deptMap['Scholar']);
+                } else {
+                    displayDepts = deptMap[prog];
+                }
+                
+                if (year !== 'All Years') {
+                    // All departments but a specific year
+                    rowsToGenerate = displayDepts.map(d => d + ' (' + year + ')');
+                } else {
+                    rowsToGenerate = displayDepts;
+                }
+            }
+            
+            tbody.innerHTML = '';
+            
+            rowsToGenerate.forEach(r => {
+                const tr = document.createElement('tr');
+                const nameTd = document.createElement('td');
+                nameTd.style.fontWeight = '600';
+                nameTd.innerText = r;
+                tr.appendChild(nameTd);
+                
+                for(let i=0; i<8; i++) {
+                    const td = document.createElement('td');
+                    const span = document.createElement('span');
+                    span.className = 'tt-val';
+                    td.appendChild(span);
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            });
+
+            randomizeTimetableValues();
+        }
+
+        function randomizeTimetableValues() {
+            const ttValues = document.querySelectorAll('.tt-val');
+            ttValues.forEach(el => {
+                let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65; 
+                
+                setTimeout(() => {
+                    el.innerText = randomPercent + "%";
+                    el.classList.remove('bg-light-green', 'bg-light-yellow', 'bg-light-red');
+                    
+                    if (randomPercent >= 85) {
+                        el.classList.add('bg-light-green');
+                    } else if (randomPercent >= 75) {
+                        el.classList.add('bg-light-yellow');
+                    } else {
+                        el.classList.add('bg-light-red');
+                    }
+                    
+                    el.onclick = () => openDetailsModal('Period', randomPercent);
+                }, 50);
+                
+                el.style.transform = 'scale(1.15)';
+                setTimeout(() => { el.style.transform = 'scale(1)'; }, 250);
+            });
+        }
+
+        const mockNames = ["John Doe", "Jane Smith", "Arun Kumar", "Priya Singh", "Sam Wilson"];
+        const mockOD = ["OD - Sports", "OD - NSS", "Medical Leave", "Absent", "OD - Symposium"];
+
+        function openDetailsModal(type, value) {
+            const program = document.getElementById('program-select').value;
+            const dept = document.getElementById('department-select').value;
+            const year = document.getElementById('year-select').value;
+            
+            // Redirect to the new details page with data
+            window.location.href = "student-details.html?type=" + encodeURIComponent(type) 
+                + "&count=" + encodeURIComponent(value)
+                + "&program=" + encodeURIComponent(program)
+                + "&dept=" + encodeURIComponent(dept)
+                + "&year=" + encodeURIComponent(year);
+        }
+
+        function randomizeCards() {
+            const baseTotals = {
+                total: 2600,
+                ug: 2200,
+                pg: 350,
+                scholar: 50
+            };
+            
+            // Randomly simulate an overall present percentage between 85% and 98%
+            let randomPercent = Math.floor(Math.random() * (98 - 85 + 1)) + 85;
+            
+            // Helper function to animate values
+            function updateStat(id, newVal, label, isIcon = false) {
+                const el = document.getElementById(id);
+                if (!el) return;
+                
+                el.style.transition = 'color 0.2s, transform 0.2s';
+                if (!el.dataset.origColor) el.dataset.origColor = el.style.color;
+                
+                el.style.color = '#94a3b8';
+                el.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => { 
+                    if (isIcon) {
+                        el.innerHTML = `${newVal} ${label} &rarr;`;
+                    } else {
+                        el.innerText = `✓ ${newVal} ${label}`;
+                    }
+                }, 100);
+                setTimeout(() => {
+                    el.style.color = el.dataset.origColor || '';
+                    el.style.transform = 'scale(1)';
+                }, 300);
+            }
+
+            // Calculate exact numbers
+            let totalPresent = Math.floor(baseTotals.total * (randomPercent / 100));
+            let totalAbsent = Math.floor((baseTotals.total - totalPresent) * 0.8); // 80% of missing are absent
+            let totalOD = baseTotals.total - totalPresent - totalAbsent; // Rest are OD
+            
+            // Distribute proportionally
+            let scholarP = Math.floor(totalPresent * (baseTotals.scholar / baseTotals.total));
+            let scholarA = Math.floor(totalAbsent * (baseTotals.scholar / baseTotals.total));
+            let scholarO = baseTotals.scholar - scholarP - scholarA;
+            
+            let pgP = Math.floor(totalPresent * (baseTotals.pg / baseTotals.total));
+            let pgA = Math.floor(totalAbsent * (baseTotals.pg / baseTotals.total));
+            let pgO = baseTotals.pg - pgP - pgA;
+            
+            let ugP = totalPresent - scholarP - pgP;
+            let ugA = totalAbsent - scholarA - pgA;
+            let ugO = baseTotals.ug - ugP - ugA;
+
+            // Apply updates
+            updateStat('sub-total-present', totalPresent, 'Present');
+            updateStat('sub-total-absent', totalAbsent, 'Absent', true);
+            updateStat('sub-total-od', totalOD, 'OD', true);
+
+            updateStat('sub-ug-present', ugP, 'Present');
+            updateStat('sub-ug-absent', ugA, 'Absent', true);
+            updateStat('sub-ug-od', ugO, 'OD', true);
+
+            updateStat('sub-pg-present', pgP, 'Present');
+            updateStat('sub-pg-absent', pgA, 'Absent', true);
+            updateStat('sub-pg-od', pgO, 'OD', true);
+
+            updateStat('sub-scholar-present', scholarP, 'Present');
+            updateStat('sub-scholar-absent', scholarA, 'Absent', true);
+            updateStat('sub-scholar-od', scholarO, 'OD', true);
+        }
+
+        function randomizeCardsAndTimetable() {
+            randomizeCards();
+            randomizeTimetableValues();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('date-input');
+            if(dateInput) {
+                dateInput.valueAsDate = new Date();
+            }
+            // Initialize timetable with all rows
+            updateTimetableRows();
+        });
+    </script>
+
+</body>
+</html>
