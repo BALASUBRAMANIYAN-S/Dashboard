@@ -142,16 +142,41 @@
             const type = params.get('type') || "Unknown";
             const count = parseInt(params.get('count')) || 0;
             const program = params.get('program') || "UG";
-            const dept = params.get('dept') || "CS";
+            const dept = params.get('dept');
             const year = params.get('year') || "All Years";
             
             // Set Filter Values
             document.getElementById('program-select').value = program;
-            document.getElementById('department-select').value = dept;
+            if (dept) document.getElementById('department-select').value = dept;
             document.getElementById('year-select').value = year;
 
             // Set Page Title
-            document.getElementById('page-title').innerText = `${type} Students (${count})`;
+            if (dept && year !== "All Years") {
+                document.getElementById('page-title').innerText = `${dept} - ${year} Details`;
+            } else {
+                document.getElementById('page-title').innerText = `${type} Students (${count})`;
+            }
+
+            // Dynamic Continuous Breadcrumb
+            if (dept) {
+                let typeLink = "ug-departments.html";
+                if (type === "PG") typeLink = "pg-departments.html";
+                if (type === "Scholar") typeLink = "scholars-departments.html";
+
+                const breadcrumbNav = document.querySelector('.breadcrumb');
+                breadcrumbNav.className = "breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500";
+                breadcrumbNav.innerHTML = `
+                    <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
+                    <span class="separator mx-2">/</span>
+                    <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student Attendance</a>
+                    <span class="separator mx-2">/</span>
+                    <a href="${typeLink}" class="back-link hover:text-blue-600 transition-colors">${type} Departments</a>
+                    <span class="separator mx-2">/</span>
+                    <a href="year-overview.html?type=${type}&dept=${dept}" class="back-link hover:text-blue-600 transition-colors">${dept}</a>
+                    <span class="separator mx-2">/</span>
+                    <span class="active-path text-slate-800 font-semibold">${year} Details</span>
+                `;
+            }
             
             // Generate mock rows
             const tbody = document.getElementById('table-body');
