@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year Overview - Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="student-attendance.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+    <div class="container mx-auto p-6 max-w-7xl">
+
+        <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
+            <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
+            <span class="separator mx-2">/</span>
+            <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student Attendance</a>
+            <span class="separator mx-2">/</span>
+            <a href="#" id="bc-type" class="back-link hover:text-blue-600 transition-colors">Departments</a>
+            <span class="separator mx-2">/</span>
+            <span class="active-path text-slate-800 font-semibold" id="bc-dept">Dept</span>
+        </nav>
+
+        <div class="flex justify-between items-center mb-8 border-b-2 border-slate-200 pb-4">
+            <h1 class="text-2xl font-bold text-slate-800" id="page-title">Year Overview</h1>
+        </div>
+
+        <div class="box-grid" id="year-cards-container">
+            <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- Timetable Bottom -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600;">
+            Period-wise Timetable</h2>
+        <div class="timetable-wrapper mb-10">
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Class Section</th>
+                        <th>Mentor Hour</th>
+                        <th>Period 1</th>
+                        <th>Period 2</th>
+                        <th>Period 3</th>
+                        <th>Period 4</th>
+                        <th>Period 5</th>
+                        <th>Period 6</th>
+                        <th>Period 7</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type') || "UG";
+            const dept = params.get('dept') || "Dept";
+
+            document.getElementById('page-title').innerText = `${dept} - Year Overview`;
+            document.getElementById('bc-type').innerText = `${type} Departments`;
+            
+            // Set correct back link for the department type
+            let backLink = "ug-departments.html";
+            if (type === "PG") backLink = "pg-departments.html";
+            else if (type === "Scholar") backLink = "scholars-departments.html";
+            
+            document.getElementById('bc-type').href = backLink;
+            document.getElementById('bc-dept').innerText = dept;
+
+            let numYears = 4;
+            if (type === 'PG') numYears = 2;
+            if (type === 'Scholar') numYears = 3;
+
+            const container = document.getElementById('year-cards-container');
+            let html = '';
+
+            const icons = {
+                'UG': 'mdi-book-education',
+                'PG': 'mdi-flask',
+                'Scholar': 'mdi-microscope'
+            };
+            const iconClass = {
+                'UG': 'bg-emerald-100 text-emerald-600',
+                'PG': 'bg-pink-100 text-pink-600',
+                'Scholar': 'bg-cyan-100 text-cyan-600'
+            };
+            const textColor = {
+                'UG': 'text-emerald-500',
+                'PG': 'text-pink-500',
+                'Scholar': 'text-cyan-500'
+            };
+
+            for (let i = 1; i <= numYears; i++) {
+                let yearStr = i === 1 ? "1st Year" : i === 2 ? "2nd Year" : i === 3 ? "3rd Year" : "4th Year";
+                let total = Math.floor(Math.random() * 50) + 50; // Random total 50-100
+                let absentees = Math.floor(Math.random() * 10);
+                let ods = Math.floor(Math.random() * 5);
+                let present = total - absentees - ods;
+
+                html += `
+                    <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='student-details.html?type=${type}&dept=${dept}&year=${yearStr}'">
+                        <div class="flex-1 flex flex-col">
+                            <div class="mb-4 pb-4 border-b border-slate-100">
+                                <div class="flex flex-row items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <span class="icon-container ${iconClass[type] || iconClass['UG']}"><i class="mdi ${icons[type] || icons['UG']}"></i></span>
+                                        <span class="text-lg font-semibold text-slate-700">${yearStr}</span>
+                                    </div>
+                                </div>
+                                <div class="text-right mt-2">
+                                    <div class="text-[15px] gap-1 font-medium text-gray-800">${total}
+                                        <p class="text-[10px] uppercase text-slate-500">total</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <div class="text-5xl font-bold ${textColor[type] || textColor['UG']} leading-none">${present}</div>
+                                    <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
+                            <div class="flex flex-col items-center justify-center px-2 py-2">
+                                <span class="text-2xl font-bold text-rose-600 leading-none">${absentees}</span>
+                                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                            </div>
+                            <div class="flex flex-col items-center justify-center px-2 py-2">
+                                <span class="text-2xl font-bold text-orange-600 leading-none">${ods}</span>
+                                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
+
+            // Generate Timetable for Sections A and B
+            const tbody = document.getElementById('timetable-body');
+            tbody.innerHTML = '';
+            const sections = ['(A)', '(B)'];
+
+            for (let i = 1; i <= numYears; i++) {
+                let yearStr = i === 1 ? "1st Year" : i === 2 ? "2nd Year" : i === 3 ? "3rd Year" : "4th Year";
+                
+                sections.forEach(sec => {
+                    const className = `${yearStr} ${sec}`;
+                    const tr = document.createElement('tr');
+                    const nameTd = document.createElement('td');
+                    nameTd.style.fontWeight = '600';
+                    nameTd.innerText = className;
+                    tr.appendChild(nameTd);
+                    
+                    for (let j = 0; j < 8; j++) {
+                        const td = document.createElement('td');
+                        const span = document.createElement('span');
+                        span.className = 'tt-val';
+                        
+                        let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65;
+                        span.innerText = randomPercent + "%";
+                        
+                        if (randomPercent >= 85) {
+                            span.classList.add('bg-light-green');
+                        } else if (randomPercent >= 75) {
+                            span.classList.add('bg-light-yellow');
+                        } else {
+                            span.classList.add('bg-light-red');
+                        }
+                        
+                        span.onclick = () => {
+                            window.location.href = `student-details.html?type=${type}&dept=${dept}&year=${yearStr}`;
+                        };
+                        
+                        td.appendChild(span);
+                        tr.appendChild(td);
+                    }
+                    tbody.appendChild(tr);
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
