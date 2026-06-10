@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dist/output.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 </head>
+
 <body>
     <div id="main-dashboard" class="container">
         <div class="dashboard-header">
@@ -17,77 +19,117 @@
                 <span><i class="mdi mdi-cog"></i> Settings</span>
             </button>
         </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-2">
             <!-- Student Attendance -->
-            <a href="attendance/student-attendance.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="student-attendance">
-                <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
-                    <div class="flex items-center gap-3">
-                        <span class="text-3xl"><i class="mdi mdi-school text-blue-500"></i></span>
-                        <span class="text-lg font-semibold text-slate-700">Student Attendance</span>
+            <div class="box animate-fade-in-up delay-100" data-widget-id="student-attendance">
+                <div class="flex-1 flex flex-col cursor-pointer"
+                    onclick="window.location.href='attendance/student-attendance.html'">
+                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <span class="icon-container bg-blue-100 text-blue-600"><i class="mdi mdi-school"></i></span>
+                            <span class="text-lg font-semibold text-slate-700">Student Attendance</span>
+                        </div>
+                        <div onclick="event.stopPropagation();">
+                            <input type="date"
+                                class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500"
+                                onchange="updateMockData(this, 'student')">
+                        </div>
                     </div>
-                    <div onclick="event.preventDefault();">
-                        <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'student')">
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <div class="text-5xl font-bold text-emerald-500 leading-none" id="student-present-val">2456
+                            </div>
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-blue-500 leading-none" id="student-total-val">2600</div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wide mt-2">Total</div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex justify-between items-center mt-auto">
-                    <div>
-                        <div class="text-5xl font-bold text-emerald-500 leading-none" id="student-present-val">2456</div>
-                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
+                        onclick="window.location.href='attendance/student-details.html'">
+                        <span class="text-2xl font-bold text-rose-600 leading-none" id="student-absent-val">112</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
                     </div>
-                    <div class="flex flex-col gap-2 border-l border-slate-100 pl-4 w-36">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">Total</span>
-                            <span class="font-bold text-slate-800" id="student-total-val">2600</span>
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
+                        onclick="window.location.href='attendance/student-details.html'">
+                        <span class="text-2xl font-bold text-orange-600 leading-none" id="student-od-val">32</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">ODs</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Staff Attendance -->
+            <div class="box animate-fade-in-up delay-150" data-widget-id="staff-attendance">
+                <div class="flex-1 flex flex-col cursor-pointer"
+                    onclick="window.location.href='attendance/staff-attendance.html'">
+                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <span class="icon-container bg-indigo-100 text-indigo-600"><i
+                                    class="mdi mdi-human-male-board"></i></span>
+                            <span class="text-lg font-semibold text-slate-700">Staff Attendance</span>
                         </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">Absentees</span>
-                            <span class="font-bold text-rose-400" id="student-absent-val">112</span>
+                        <div onclick="event.stopPropagation();">
+                            <input type="date"
+                                class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500"
+                                onchange="updateMockData(this, 'staff')">
                         </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">ODs</span>
-                            <span class="font-bold text-slate-800" id="student-od-val">32</span>
+                    </div>
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <div class="text-5xl font-bold text-emerald-500 leading-none" id="staff-present-val">450
+                            </div>
+                            <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
                         </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-blue-500 leading-none" id="staff-total-val">550</div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wide mt-2">Total</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
+                        onclick="window.location.href='attendance/staff-details.html'">
+                        <span class="text-2xl font-bold text-rose-600 leading-none" id="staff-absent-val">60</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
+                        onclick="window.location.href='attendance/staff-details.html'">
+                        <span class="text-2xl font-bold text-orange-600 leading-none" id="staff-cl-val">40</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">CLs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IT Asset -->
+            <a href="#" class="box animate-fade-in-up delay-400" data-widget-id="it-asset">
+                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+                    <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-laptop"></i></span>
+                    <span class="text-lg font-semibold text-slate-700">IT Asset</span>
+                </div>
+                <div class="mt-auto flex flex-col">
+                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Inventory</h4>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
+                        <span class="text-sm font-medium text-slate-600">Total Assets:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
+                        <span class="text-sm font-medium text-slate-600">Maintenance:</span>
+                        <span class="text-sm font-bold text-slate-800">--</span>
                     </div>
                 </div>
             </a>
 
-            <!-- Staff Attendance -->
-            <a href="attendance/staff-attendance.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="staff-attendance">
-                <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
-                    <div class="flex items-center gap-3">
-                        <span class="text-3xl"><i class="mdi mdi-human-male-board text-indigo-500"></i></span>
-                        <span class="text-lg font-semibold text-slate-700">Staff Attendance</span>
-                    </div>
-                    <div onclick="event.preventDefault();">
-                        <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'staff')">
-                    </div>
-                </div>
-                <div class="flex justify-between items-center mt-auto">
-                    <div>
-                        <div class="text-5xl font-bold text-emerald-500 leading-none" id="staff-present-val">450</div>
-                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
-                    </div>
-                    <div class="flex flex-col gap-2 border-l border-slate-100 pl-4 w-36">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">Total</span>
-                            <span class="font-bold text-slate-800" id="staff-total-val">550</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">Absentees</span>
-                            <span class="font-bold text-rose-400" id="staff-absent-val">60</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-slate-500">CLs</span>
-                            <span class="font-bold text-slate-800" id="staff-cl-val">40</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
+
             <!-- Hostel -->
-            <a href="hostel/hostel.html" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="hostel">
+            <a href="hostel/hostel.html" class="box animate-fade-in-up delay-200" data-widget-id="hostel">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-office-building text-sky-500"></i></span>
+                    <span class="icon-container bg-sky-100 text-sky-600"><i class="mdi mdi-office-building"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Hostel</span>
                 </div>
                 <div class="flex justify-between items-center text-center mt-auto px-2">
@@ -107,9 +149,9 @@
             </a>
 
             <!-- Transport -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="transport">
+            <a href="#" class="box animate-fade-in-up delay-250" data-widget-id="transport">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-bus text-yellow-500"></i></span>
+                    <span class="icon-container bg-amber-100 text-amber-600"><i class="mdi mdi-bus"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Transport</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -126,9 +168,9 @@
             </a>
 
             <!-- Participants & Achievements -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="participants">
+            <a href="#" class="box animate-fade-in-up delay-300" data-widget-id="participants">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-trophy text-amber-500"></i></span>
+                    <span class="icon-container bg-orange-100 text-orange-600"><i class="mdi mdi-trophy"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Participants & Achievements</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -145,9 +187,9 @@
             </a>
 
             <!-- Publication & Research -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="research">
+            <a href="#" class="box animate-fade-in-up delay-350" data-widget-id="research">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-microscope text-violet-500"></i></span>
+                    <span class="icon-container bg-violet-100 text-violet-600"><i class="mdi mdi-microscope"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Publication & Research</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -162,30 +204,11 @@
                     </div>
                 </div>
             </a>
-
-            <!-- IT Asset -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="it-asset">
-                <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-laptop text-emerald-500"></i></span>
-                    <span class="text-lg font-semibold text-slate-700">IT Asset</span>
-                </div>
-                <div class="mt-auto flex flex-col">
-                    <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Inventory</h4>
-                    <div class="flex justify-between items-center bg-slate-50 rounded p-2 mb-2">
-                        <span class="text-sm font-medium text-slate-600">Total Assets:</span>
-                        <span class="text-sm font-bold text-slate-800">--</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-slate-50 rounded p-2">
-                        <span class="text-sm font-medium text-slate-600">Maintenance:</span>
-                        <span class="text-sm font-bold text-slate-800">--</span>
-                    </div>
-                </div>
-            </a>
-
             <!-- Service & Bookings -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="service">
+            <a href="#" class="box animate-fade-in-up delay-450" data-widget-id="service">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl">🛎️</span>
+                    <span class="icon-container bg-teal-100 text-teal-600"><i
+                            class="mdi mdi-bell-ring-outline"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Service & Bookings</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -202,9 +225,10 @@
             </a>
 
             <!-- Supervisor & Scholars -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="scholars">
+            <a href="#" class="box animate-fade-in-up delay-500" data-widget-id="scholars">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-certificate text-purple-500"></i></span>
+                    <span class="icon-container bg-purple-100 text-purple-600"><i
+                            class="mdi mdi-certificate"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Supervisor & Scholars</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -221,9 +245,9 @@
             </a>
 
             <!-- Graduates -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="graduates">
+            <a href="#" class="box animate-fade-in-up delay-550" data-widget-id="graduates">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl">📜</span>
+                    <span class="icon-container bg-pink-100 text-pink-600"><i class="mdi mdi-school-outline"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Graduates</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -240,9 +264,9 @@
             </a>
 
             <!-- Career Applications -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="career">
+            <a href="#" class="box animate-fade-in-up delay-600" data-widget-id="career">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-briefcase text-cyan-500"></i></span>
+                    <span class="icon-container bg-cyan-100 text-cyan-600"><i class="mdi mdi-briefcase"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Career Applications</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -259,9 +283,9 @@
             </a>
 
             <!-- Consultancy & MOUs -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="mou">
+            <a href="#" class="box animate-fade-in-up delay-650" data-widget-id="mou">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-handshake text-rose-500"></i></span>
+                    <span class="icon-container bg-rose-100 text-rose-600"><i class="mdi mdi-handshake"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Consultancy & MOUs</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -278,9 +302,10 @@
             </a>
 
             <!-- Library Books -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="library">
+            <a href="#" class="box animate-fade-in-up delay-700" data-widget-id="library">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-book-open-page-variant text-fuchsia-500"></i></span>
+                    <span class="icon-container bg-fuchsia-100 text-fuchsia-600"><i
+                            class="mdi mdi-book-open-page-variant"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Library Books</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -297,9 +322,9 @@
             </a>
 
             <!-- Gate -->
-            <a href="#" class="box bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 p-6 flex flex-col" data-widget-id="gate">
+            <a href="#" class="box animate-fade-in-up delay-750" data-widget-id="gate">
                 <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
-                    <span class="text-3xl"><i class="mdi mdi-door text-stone-500"></i></span>
+                    <span class="icon-container bg-stone-100 text-stone-600"><i class="mdi mdi-door"></i></span>
                     <span class="text-lg font-semibold text-slate-700">Gate</span>
                 </div>
                 <div class="mt-auto flex flex-col">
@@ -320,14 +345,14 @@
     <!-- Inner Module Placeholder -->
     <div id="inner-module" class="container" style="display: none;">
         <nav class="breadcrumb">
-            <span class="back-link" onclick="goBack()">Dashboard</span> 
-            <span>/</span> 
+            <span class="back-link" onclick="goBack()">Dashboard</span>
+            <span>/</span>
             <span id="current-module-name" class="active-path">Module Name</span>
             <span>/</span>
         </nav>
 
         <h1 id="module-title" class="main-title">Module Title</h1>
-        
+
         <div class="module-content">
             <p>This is where we will build the specific features for this module step-by-step.</p>
         </div>
@@ -337,7 +362,8 @@
     <div class="modal-overlay" id="settings-overlay">
         <div class="settings-modal">
             <h2>Dashboard Settings</h2>
-            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">Select which widgets you want to see on your dashboard.</p>
+            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">Select which widgets you want to see on
+                your dashboard.</p>
             <div class="settings-list" id="settings-list">
                 <!-- Checkboxes populated via JS -->
             </div>
@@ -372,23 +398,23 @@
             const valEl = document.getElementById(type + '-present-val');
             const totalEl = document.getElementById(type + '-total-val');
             const absentEl = document.getElementById(type + '-absent-val');
-            
+
             // For students it's ODs, for staff it's CLs
             const otherEl = document.getElementById(type + (type === 'student' ? '-od-val' : '-cl-val'));
-            
+
             let currentVal = parseInt(valEl.innerText);
             let change = Math.floor(Math.random() * 11) - 5;
             let newPresent = currentVal + change;
-            
+
             let total = parseInt(totalEl.innerText);
             let other = parseInt(otherEl.innerText);
-            
+
             // Ensure bounds
             if (newPresent > total - other) newPresent = total - other;
             if (newPresent < 0) newPresent = 0;
-            
+
             valEl.innerText = newPresent;
-            if(absentEl) {
+            if (absentEl) {
                 absentEl.innerText = total - newPresent - other;
             }
         }
@@ -417,15 +443,15 @@
 
             Object.keys(WIDGET_NAMES).forEach(id => {
                 const isHidden = localStorage.getItem('hide_widget_' + id) === 'true';
-                
+
                 const boxEl = document.querySelector(`.box[data-widget-id="${id}"]`);
-                if(boxEl && isHidden) {
+                if (boxEl && isHidden) {
                     boxEl.classList.add('hidden-widget');
                 }
 
                 const item = document.createElement('div');
                 item.className = 'setting-item';
-                
+
                 // Toggle Switch Container
                 const switchLabel = document.createElement('label');
                 switchLabel.className = 'switch';
@@ -476,4 +502,5 @@
         }
     </script>
 </body>
+
 </html>

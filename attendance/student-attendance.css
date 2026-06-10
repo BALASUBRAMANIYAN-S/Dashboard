@@ -120,7 +120,7 @@
 }
 
 .metric-value {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: #0f172a;
 }
@@ -186,4 +186,4 @@
 .bg-light-green { background-color: #86efac; color: #14532d; }
 .bg-light-yellow { background-color: #fde047; color: #713f12; }
 .bg-light-red { background-color: #fca5a5; color: #7f1d1d; }
-
+

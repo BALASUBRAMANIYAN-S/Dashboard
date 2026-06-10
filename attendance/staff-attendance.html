@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,16 @@
     <link rel="stylesheet" href="attendance.css">
     <link rel="stylesheet" href="student-attendance.css">
     <link rel="stylesheet" href="../dist/output.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 </head>
+
 <body>
 
     <div class="container">
-        
+
         <nav class="breadcrumb">
-            <a href="../index.html" class="back-link">Dashboard</a> 
-            <span class="separator">/</span> 
+            <a href="../index.html" class="back-link">Dashboard</a>
+            <span class="separator">/</span>
             <span class="active-path">Staff Attendance</span>
         </nav>
 
@@ -26,36 +28,102 @@
         <h2 style="font-size: 1.4rem; color: #1e293b; margin-bottom: 1rem; font-weight: 600;">Staff Demographics</h2>
         <div class="metrics-grid" style="margin-bottom: 2.5rem;">
             <div class="metric-card" style="border-top-color: #3b82f6;">
-                <div class="metric-title">Total Staff</div>
-                <div class="metric-value">550</div>
-                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-tot-present">✓ 450 Present</div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-tot-vac" onclick="openDetailsModal('Total Vacation', 45)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">45 Vacation &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-tot-cl" onclick="openDetailsModal('Total CL', 25)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">25 CL &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-tot-compoff" onclick="openDetailsModal('Total Compoff', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 Compoff &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-tot-lob" onclick="openDetailsModal('Total LOB', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem;">
+                    <div>
+                        <div style="font-size: 2.2rem; font-weight: 700; color: #10b981; line-height: 1;"
+                            id="sub-tot-present"> 450 Present</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.6rem; font-weight: 700; color: #3b82f6; line-height: 1;"
+                            class="metric-value">550</div>
+                        <div class="metric-title" style="margin-top:0.4rem;">Total Staff</div>
+                    </div>
+                </div>
+                <div
+                    style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-tot-vac" onclick="openDetailsModal('Total Vacation', 45)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">45 Vacation &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-tot-cl" onclick="openDetailsModal('Total CL', 25)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">25 CL &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-tot-compoff" onclick="openDetailsModal('Total Compoff', 15)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">15 Compoff &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-tot-lob" onclick="openDetailsModal('Total LOB', 15)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
                 </div>
             </div>
             <div class="metric-card" style="border-top-color: #8b5cf6;">
-                <div class="metric-title">Teaching</div>
-                <div class="metric-value">400</div>
-                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-teach-present">✓ 320 Present</div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-teach-vac" onclick="openDetailsModal('Teaching Vacation', 35)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">35 Vacation &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-teach-cl" onclick="openDetailsModal('Teaching CL', 20)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">20 CL &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-teach-compoff" onclick="openDetailsModal('Teaching Compoff', 10)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">10 Compoff &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-teach-lob" onclick="openDetailsModal('Teaching LOB', 15)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem;">
+                    <div>
+                        <div style="font-size: 2.2rem; font-weight: 700; color: #10b981; line-height: 1;"
+                            id="sub-teach-present"> 320 Present</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.6rem; font-weight: 700; color: #3b82f6; line-height: 1;"
+                            class="metric-value">400</div>
+                        <div class="metric-title" style="margin-top:0.4rem;">Teaching</div>
+                    </div>
+                </div>
+                <div
+                    style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-teach-vac" onclick="openDetailsModal('Teaching Vacation', 35)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">35 Vacation &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-teach-cl" onclick="openDetailsModal('Teaching CL', 20)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">20 CL &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-teach-compoff" onclick="openDetailsModal('Teaching Compoff', 10)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">10 Compoff &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-teach-lob" onclick="openDetailsModal('Teaching LOB', 15)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">15 LOB &rarr;</div>
                 </div>
             </div>
             <div class="metric-card" style="border-top-color: #ec4899;">
-                <div class="metric-title">Non-Teaching</div>
-                <div class="metric-value">150</div>
-                <div style="font-size: 1.1rem; font-weight: 600; color: #10b981; margin-top: 0.3rem;" id="sub-non-present">✓ 130 Present</div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-non-vac" onclick="openDetailsModal('Non-Teaching Vacation', 10)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">10 Vacation &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-non-cl" onclick="openDetailsModal('Non-Teaching CL', 5)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">5 CL &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;" id="sub-non-compoff" onclick="openDetailsModal('Non-Teaching Compoff', 5)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">5 Compoff &rarr;</div>
-                    <div style="font-size: 1.05rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;" id="sub-non-lob" onclick="openDetailsModal('Non-Teaching LOB', 0)" onmouseover="this.style.transform='translateX(3px)'" onmouseout="this.style.transform='translateX(0)'">0 LOB &rarr;</div>
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem;">
+                    <div>
+                        <div style="font-size: 2.2rem; font-weight: 700; color: #10b981; line-height: 1;"
+                            id="sub-non-present"> 130 Present</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.6rem; font-weight: 700; color: #3b82f6; line-height: 1;"
+                            class="metric-value">150</div>
+                        <div class="metric-title" style="margin-top:0.4rem;">Non-Teaching</div>
+                    </div>
+                </div>
+                <div
+                    style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.8rem; border-top: 1px solid #f1f5f9; padding-top: 0.8rem;">
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-non-vac" onclick="openDetailsModal('Non-Teaching Vacation', 10)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">10 Vacation &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-non-cl" onclick="openDetailsModal('Non-Teaching CL', 5)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">5 CL &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #f59e0b; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-non-compoff" onclick="openDetailsModal('Non-Teaching Compoff', 5)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">5 Compoff &rarr;</div>
+                    <div style="font-size: 1.3rem; font-weight: 700; color: #ef4444; cursor: pointer; transition: transform 0.2s;"
+                        id="sub-non-lob" onclick="openDetailsModal('Non-Teaching LOB', 0)"
+                        onmouseover="this.style.transform='translateX(3px)'"
+                        onmouseout="this.style.transform='translateX(0)'">0 LOB &rarr;</div>
                 </div>
             </div>
         </div>
@@ -87,7 +155,28 @@
             </div>
         </div>
 
+        <!-- Section 3: Department Table -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-top: 2rem; margin-bottom: 1rem; font-weight: 600;">
+            Department Leave Summary</h2>
+        <div style="overflow-x: auto; margin-bottom: 3rem;">
+            <table
+                style="width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <thead style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                    <tr>
+                        <th style="padding: 1rem; text-align: left; font-weight: 600; color: #475569;">Department</th>
+                        <th style="padding: 1rem; text-align: center; font-weight: 600; color: #475569;">Vacation</th>
+                        <th style="padding: 1rem; text-align: center; font-weight: 600; color: #475569;">CL</th>
+                        <th style="padding: 1rem; text-align: center; font-weight: 600; color: #475569;">Compoff</th>
+                        <th style="padding: 1rem; text-align: center; font-weight: 600; color: #475569;">LoP</th>
+                    </tr>
+                </thead>
+                <tbody id="dept-table-body">
+                    <!-- Populated via JS -->
+                </tbody>
+            </table>
+        </div>
 
+    </div>
 
     <script>
         const deptMap = {
@@ -110,9 +199,9 @@
         function onTypeChange() {
             const type = document.getElementById('type-select').value;
             const deptSelect = document.getElementById('department-select');
-            
+
             deptSelect.innerHTML = '<option value="">All Departments</option>';
-            
+
             if (type === '') {
                 populateAllDepartments();
             } else {
@@ -130,7 +219,7 @@
         function randomizeCards() {
             const type = document.getElementById('type-select').value;
             const dept = document.getElementById('department-select').value;
-            
+
             // Calculate Base Total dynamically based on selected filters
             let baseTotal = 550;
             if (dept !== '') {
@@ -143,15 +232,15 @@
 
             // --- Update Top Demographics (Always Global for the Date) ---
             const gBase = baseTotal; // Use the filtered total as the primary baseline for the view
-            
+
             // To keep things simple and completely clean, we distribute the mock numbers 
             // for the current base. (This replaces the old complex base logic)
-            let gVac = Math.floor(gBase * 0.08) + (Math.floor(Math.random()*3)-1);
-            let gCl = Math.floor(gBase * 0.05) + (Math.floor(Math.random()*3)-1);
-            let gComp = Math.floor(gBase * 0.02) + Math.floor(Math.random()*2);
-            let gLob = Math.floor(gBase * 0.03) + Math.floor(Math.random()*2);
-            if(gVac < 0) gVac = 0; if(gCl < 0) gCl = 0;
-            
+            let gVac = Math.floor(gBase * 0.08) + (Math.floor(Math.random() * 3) - 1);
+            let gCl = Math.floor(gBase * 0.05) + (Math.floor(Math.random() * 3) - 1);
+            let gComp = Math.floor(gBase * 0.02) + Math.floor(Math.random() * 2);
+            let gLob = Math.floor(gBase * 0.03) + Math.floor(Math.random() * 2);
+            if (gVac < 0) gVac = 0; if (gCl < 0) gCl = 0;
+
             let gPres = gBase - gVac - gCl - gComp - gLob;
 
             // Distribute across Teaching/Non-Teaching exactly based on 400/150 split ratio 
@@ -171,29 +260,62 @@
             let ntLob = gLob - tLob;
             let ntPres = ntBase - ntVac - ntCl - ntComp - ntLob;
 
-            document.getElementById('sub-tot-present').innerText = `✓ ${gPres} Present`;
+            document.getElementById('sub-tot-present').innerText = ` ${gPres} Present`;
             document.getElementById('sub-tot-vac').innerHTML = `${gVac} Vacation &rarr;`;
             document.getElementById('sub-tot-cl').innerHTML = `${gCl} CL &rarr;`;
             document.getElementById('sub-tot-compoff').innerHTML = `${gComp} Compoff &rarr;`;
             document.getElementById('sub-tot-lob').innerHTML = `${gLob} LOB &rarr;`;
 
-            document.getElementById('sub-teach-present').innerText = `✓ ${tPres} Present`;
+            document.getElementById('sub-teach-present').innerText = ` ${tPres} Present`;
             document.getElementById('sub-teach-vac').innerHTML = `${tVac} Vacation &rarr;`;
             document.getElementById('sub-teach-cl').innerHTML = `${tCl} CL &rarr;`;
             document.getElementById('sub-teach-compoff').innerHTML = `${tComp} Compoff &rarr;`;
             document.getElementById('sub-teach-lob').innerHTML = `${tLob} LOB &rarr;`;
 
-            document.getElementById('sub-non-present').innerText = `✓ ${ntPres} Present`;
+            document.getElementById('sub-non-present').innerText = ` ${ntPres} Present`;
             document.getElementById('sub-non-vac').innerHTML = `${ntVac} Vacation &rarr;`;
             document.getElementById('sub-non-cl').innerHTML = `${ntCl} CL &rarr;`;
             document.getElementById('sub-non-compoff').innerHTML = `${ntComp} Compoff &rarr;`;
             document.getElementById('sub-non-lob').innerHTML = `${ntLob} LOB &rarr;`;
+
+            // Populate Department Table
+            const tbody = document.getElementById('dept-table-body');
+            if (tbody) {
+                tbody.innerHTML = '';
+
+                let deptsToRender = [];
+                if (dept !== '') {
+                    deptsToRender = [dept];
+                } else if (type === '') {
+                    deptsToRender = [].concat(deptMap['Teaching'], deptMap['Non-Teaching']);
+                } else {
+                    deptsToRender = deptMap[type];
+                }
+
+                deptsToRender.forEach(d => {
+                    let dVac = Math.floor(Math.random() * 5);
+                    let dCl = Math.floor(Math.random() * 3);
+                    let dComp = Math.floor(Math.random() * 2);
+                    let dLob = Math.floor(Math.random() * 2);
+
+                    const tr = document.createElement('tr');
+                    tr.style.borderBottom = '1px solid #f1f5f9';
+                    tr.innerHTML = `
+                        <td style="padding: 1rem; font-weight: 500; color: #334155;">${d}</td>
+                        <td style="padding: 1rem; text-align: center; color: #ef4444; font-weight: 600;">${dVac}</td>
+                        <td style="padding: 1rem; text-align: center; color: #f59e0b; font-weight: 600;">${dCl}</td>
+                        <td style="padding: 1rem; text-align: center; color: #10b981; font-weight: 600;">${dComp}</td>
+                        <td style="padding: 1rem; text-align: center; color: #64748b; font-weight: 600;">${dLob}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
         }
 
         function openDetailsModal(modalType, value) {
             const staffType = document.getElementById('type-select').value || 'Staff';
             const dept = document.getElementById('department-select').value || 'All';
-            window.location.href = "student-details.html?type=" + encodeURIComponent(modalType) 
+            window.location.href = "staff-details.html?type=" + encodeURIComponent(modalType)
                 + "&count=" + encodeURIComponent(value)
                 + "&program=" + encodeURIComponent(staffType)
                 + "&dept=" + encodeURIComponent(dept);
@@ -201,7 +323,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const dateInput = document.getElementById('date-input');
-            if(dateInput) {
+            if (dateInput) {
                 dateInput.valueAsDate = new Date();
             }
             populateAllDepartments();
@@ -209,4 +331,5 @@
     </script>
 
 </body>
+
 </html>
