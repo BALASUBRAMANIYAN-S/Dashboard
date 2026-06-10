@@ -13,6 +13,7 @@
     gap: 1.5rem;
     margin-bottom: 2rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    margin-top: 10px;
 }
 
 .filter-group {
@@ -27,12 +28,12 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: #64748b;
-    text-
-    letter-spacing: 0.5px;
+    text- letter-spacing: 0.5px;
 }
 
 /* Style for Dropdowns and Text Inputs */
-.filter-group select, .filter-group input {
+.filter-group select,
+.filter-group input {
     padding: 0.75rem;
     border-radius: 8px;
     border: 1px solid #cbd5e1;
@@ -42,7 +43,8 @@
     color: #0f172a;
 }
 
-.filter-group select:focus, .filter-group input:focus {
+.filter-group select:focus,
+.filter-group input:focus {
     border-color: #2563eb;
 }
 
@@ -56,8 +58,7 @@
 .date-radio-group label {
     font-size: 0.95rem;
     font-weight: 500;
-    text-
-    color: #0f172a;
+    text- color: #0f172a;
     display: flex;
     align-items: center;
     gap: 0.3rem;
@@ -83,8 +84,14 @@
 }
 
 /* Color coding for specific cards */
-.absent-card { cursor: pointer; }  /* For Absent hover effects */
-.od-card { cursor: pointer; }
+.absent-card {
+    cursor: pointer;
+}
+
+/* For Absent hover effects */
+.od-card {
+    cursor: pointer;
+}
 
 .card-hint {
     font-size: 0.75rem;
@@ -94,23 +101,51 @@
 }
 
 .absent-card:hover .card-hint {
-    color: #ef4444; /* Matches red border */
+    color: #ef4444;
+    /* Matches red border */
 }
 
 .od-card:hover .card-hint {
-    color: #f59e0b; /* Matches yellow border */
+    color: #f59e0b;
+    /* Matches yellow border */
 }
 
 /* Staff specific cards */
-.vacation-card { border-top-color: #0ea5e9; cursor: pointer; }
-.cl-card { border-top-color: #8b5cf6; cursor: pointer; }
-.compoff-card { border-top-color: #f97316; cursor: pointer; }
-.lob-card { border-top-color: #ef4444; cursor: pointer; }
+.vacation-card {
+    border-top-color: #0ea5e9;
+    cursor: pointer;
+}
 
-.vacation-card:hover .card-hint { color: #0ea5e9; }
-.cl-card:hover .card-hint { color: #8b5cf6; }
-.compoff-card:hover .card-hint { color: #f97316; }
-.lob-card:hover .card-hint { color: #ef4444; }
+.cl-card {
+    border-top-color: #8b5cf6;
+    cursor: pointer;
+}
+
+.compoff-card {
+    border-top-color: #f97316;
+    cursor: pointer;
+}
+
+.lob-card {
+    border-top-color: #ef4444;
+    cursor: pointer;
+}
+
+.vacation-card:hover .card-hint {
+    color: #0ea5e9;
+}
+
+.cl-card:hover .card-hint {
+    color: #8b5cf6;
+}
+
+.compoff-card:hover .card-hint {
+    color: #f97316;
+}
+
+.lob-card:hover .card-hint {
+    color: #ef4444;
+}
 
 .metric-title {
     font-size: 0.9rem;
@@ -146,8 +181,7 @@
     color: #64748b;
     font-size: 0.85rem;
     font-weight: 600;
-    text-
-    padding: 1rem;
+    text- padding: 1rem;
     border-bottom: 1px solid #e2e8f0;
     border-right: 1px solid #e2e8f0;
 }
@@ -183,7 +217,17 @@
     cursor: pointer;
 }
 
-.bg-light-green { background-color: #86efac; color: #14532d; }
-.bg-light-yellow { background-color: #fde047; color: #713f12; }
-.bg-light-red { background-color: #fca5a5; color: #7f1d1d; }
+.bg-light-green {
+    background-color: #86efac;
+    color: #14532d;
+}
 
+.bg-light-yellow {
+    background-color: #fde047;
+    color: #713f12;
+}
+
+.bg-light-red {
+    background-color: #fca5a5;
+    color: #7f1d1d;
+}

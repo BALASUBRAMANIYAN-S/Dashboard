@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG Departments - Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="student-attendance.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+    <div class="container mx-auto p-6 max-w-7xl">
+
+        <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
+            <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
+            <span class="separator mx-2">/</span>
+            <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student Attendance</a>
+            <span class="separator mx-2">/</span>
+            <span class="active-path text-slate-800 font-semibold">PG Departments</span>
+        </nav>
+
+        <div class="flex justify-between items-center mb-8 border-b-2 border-slate-200 pb-4">
+            <h1 class="text-2xl font-bold text-slate-800">PG Departments Overview</h1>
+        </div>
+
+        <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4">
+            <!-- MBA -->
+            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?type=PG&dept=MBA'">
+                <div class="text-2xl font-bold text-pink-500 mb-1">120</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">MBA</div>
+            </div>
+            
+            <!-- VL -->
+            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?type=PG&dept=VL'">
+                <div class="text-2xl font-bold text-pink-500 mb-1">45</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">VL</div>
+            </div>
+
+            <!-- CB -->
+            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?type=PG&dept=CB'">
+                <div class="text-2xl font-bold text-pink-500 mb-1">30</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">CB</div>
+            </div>
+
+            <!-- ME -->
+            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?type=PG&dept=ME'">
+                <div class="text-2xl font-bold text-pink-500 mb-1">55</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">ME</div>
+            </div>
+            
+            <!-- CE -->
+            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?type=PG&dept=CE'">
+                <div class="text-2xl font-bold text-pink-500 mb-1">40</div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">CE</div>
+            </div>
+        </div>
+
+        <!-- Timetable Bottom -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600;">
+            Period-wise Timetable</h2>
+        <div class="timetable-wrapper mb-10">
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Mentor Hour</th>
+                        <th>Period 1</th>
+                        <th>Period 2</th>
+                        <th>Period 3</th>
+                        <th>Period 4</th>
+                        <th>Period 5</th>
+                        <th>Period 6</th>
+                        <th>Period 7</th>
+                    </tr>
+                </thead>
+                <tbody id="timetable-body">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const depts = ['CB', 'VL', 'MBA'];
+        
+        function generateTimetable() {
+            const tbody = document.getElementById('timetable-body');
+            tbody.innerHTML = '';
+            depts.forEach(d => {
+                const tr = document.createElement('tr');
+                const nameTd = document.createElement('td');
+                nameTd.style.fontWeight = '600';
+                nameTd.innerText = d;
+                tr.appendChild(nameTd);
+                
+                for (let i = 0; i < 8; i++) {
+                    const td = document.createElement('td');
+                    const span = document.createElement('span');
+                    span.className = 'tt-val';
+                    
+                    let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65;
+                    span.innerText = randomPercent + "%";
+                    
+                    if (randomPercent >= 85) {
+                        span.classList.add('bg-light-green');
+                    } else if (randomPercent >= 75) {
+                        span.classList.add('bg-light-yellow');
+                    } else {
+                        span.classList.add('bg-light-red');
+                    }
+                    
+                    span.onclick = () => {
+                        window.location.href = 'student-details.html?dept=' + d;
+                    };
+                    
+                    td.appendChild(span);
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', generateTimetable);
+    </script>
+</body>
+
+</html>

@@ -22,17 +22,21 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-2">
             <!-- Student Attendance -->
             <div class="box animate-fade-in-up delay-100" data-widget-id="student-attendance">
-                <div class="flex-1 flex flex-col cursor-pointer"
-                    onclick="window.location.href='attendance/student-attendance.html'">
-                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
-                        <div class="flex items-center gap-3">
-                            <span class="icon-container bg-blue-100 text-blue-600"><i class="mdi mdi-school"></i></span>
-                            <span class="text-lg font-semibold text-slate-700">Student Attendance</span>
+                <div class="flex-1 flex flex-col cursor-pointer" onclick="window.location.href='attendance/student-attendance.html'">
+                    <div class="flex flex-col justify-between mb-4 pb-4 border-b border-slate-100">
+                        <div class="flex flex-row items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="icon-container bg-blue-100 text-blue-600"><i class="mdi mdi-school"></i></span>
+                                <span class="text-lg font-semibold text-slate-700">Student Attendance</span>
+                            </div>
+                            <div onclick="event.stopPropagation();">
+                                <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'student')">
+                            </div>
                         </div>
-                        <div onclick="event.stopPropagation();">
-                            <input type="date"
-                                class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500"
-                                onchange="updateMockData(this, 'student')">
+                        <div class="text-right">
+                            <div class="text-[15px] gap-1 font-medium text-gray-800" id="student-total-val">2600
+                                <p class="text-[10px]">total</p>
+                            </div>
                         </div>
                     </div>
                     <div class="flex justify-between items-end mb-4">
@@ -41,41 +45,37 @@
                             </div>
                             <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
                         </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-blue-500 leading-none" id="student-total-val">2600</div>
-                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wide mt-2">Total</div>
-                        </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
-                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
-                        onclick="window.location.href='attendance/student-details.html'">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2" onclick="window.location.href='attendance/student-details.html'">
                         <span class="text-2xl font-bold text-rose-600 leading-none" id="student-absent-val">112</span>
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
                     </div>
-                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
-                        onclick="window.location.href='attendance/student-details.html'">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2" onclick="window.location.href='attendance/student-details.html'">
                         <span class="text-2xl font-bold text-orange-600 leading-none" id="student-od-val">32</span>
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">ODs</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">ODs</span>
                     </div>
                 </div>
             </div>
             <!-- Staff Attendance -->
             <div class="box animate-fade-in-up delay-150" data-widget-id="staff-attendance">
-                <div class="flex-1 flex flex-col cursor-pointer"
-                    onclick="window.location.href='attendance/staff-attendance.html'">
-                    <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
-                        <div class="flex items-center gap-3">
-                            <span class="icon-container bg-indigo-100 text-indigo-600"><i
-                                    class="mdi mdi-human-male-board"></i></span>
-                            <span class="text-lg font-semibold text-slate-700">Staff Attendance</span>
+                <div class="flex-1 flex flex-col cursor-pointer" onclick="window.location.href='attendance/staff-attendance.html'">
+                    <div class=" justify-between mb-4 pb-4 border-b border-slate-100">
+                        <div class="flex flex-row items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="icon-container bg-indigo-100 text-indigo-600"><i
+                                        class="mdi mdi-human-male-board"></i></span>
+                                <span class="text-lg font-semibold text-slate-700">Staff Attendance</span>
+                            </div>
+                            <div onclick="event.stopPropagation();">
+                                <input type="date" class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500" onchange="updateMockData(this, 'staff')">
+                            </div>
                         </div>
-                        <div onclick="event.stopPropagation();">
-                            <input type="date"
-                                class="dashboard-date border border-slate-300 rounded p-1 text-sm outline-none focus:border-blue-500"
-                                onchange="updateMockData(this, 'staff')">
+                        <div class="text-right">
+                            <div class="text-[15px] gap-1 font-medium text-gray-800" id="student-total-val">550
+                                <p class="text-[10px]">total</p>
+                            </div>
                         </div>
                     </div>
                     <div class="flex justify-between items-end mb-4">
@@ -84,24 +84,16 @@
                             </div>
                             <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
                         </div>
-                        <div class="text-right">
-                            <div class="text-2xl font-bold text-blue-500 leading-none" id="staff-total-val">550</div>
-                            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wide mt-2">Total</div>
-                        </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
-                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
-                        onclick="window.location.href='attendance/staff-details.html'">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2" onclick="window.location.href='attendance/staff-details.html'">
                         <span class="text-2xl font-bold text-rose-600 leading-none" id="staff-absent-val">60</span>
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">Absentees</span>
                     </div>
-                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2"
-                        onclick="window.location.href='attendance/staff-details.html'">
+                    <div class="flex flex-col items-center justify-center px-2 cursor-pointer hover:bg-slate-50 transition-colors rounded py-2" onclick="window.location.href='attendance/staff-details.html'">
                         <span class="text-2xl font-bold text-orange-600 leading-none" id="staff-cl-val">40</span>
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">CLs</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2 text-center whitespace-nowrap">CLs</span>
                     </div>
                 </div>
             </div>
@@ -362,8 +354,7 @@
     <div class="modal-overlay" id="settings-overlay">
         <div class="settings-modal">
             <h2>Dashboard Settings</h2>
-            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">Select which widgets you want to see on
-                your dashboard.</p>
+            <p style="margin-bottom: 1rem; color: #64748b; font-size: 0.9rem;">Select which widgets you want to see on your dashboard.</p>
             <div class="settings-list" id="settings-list">
                 <!-- Checkboxes populated via JS -->
             </div>
