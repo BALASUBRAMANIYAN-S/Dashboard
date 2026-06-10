@@ -61,64 +61,13 @@
 
         <h1 class="main-title" id="page-title">Staff Details</h1>
 
-        <div class="filter-panel">
-            
-            <div class="filter-group">
-                <label>Program</label>
-                <select id="program-select" onchange="onProgramChange()">
-                    <option value="">All Programs</option>
-                    <option value="UG">UG</option>
-                    <option value="PG">PG</option>
-                    <option value="Scholar">Scholar</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Department</label>
-                <select id="department-select" onchange="onFilterChange()">
-                    <option value="">All Departments</option>
-                    <option value="CS">CS</option>
-                    <option value="BS">BS</option>
-                    <option value="CE">CE</option>
-                    <option value="ME">ME</option>
-                    <option value="EE">EE</option>
-                    <option value="EC">EC</option>
-                    <option value="BM">BM</option>
-                    <option value="CH">CH</option>
-                    <option value="AD">AD</option>
-                    <option value="IT">IT</option>
-                    <option value="CB">CB</option>
-                    <option value="VL">VL</option>
-                    <option value="MBA">MBA</option>
-                    <option value="PHDSH">PHDSH</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Academic Year</label>
-                <select id="year-select" onchange="onFilterChange()">
-                    <option value="All Years">All Years</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                </select>
-            </div>
-
-            <div class="filter-group" id="dynamic-date-wrapper">
-                <label id="date-label">Select Date</label>
-                <input type="date" id="date-input" onchange="randomizeStats()">
-            </div>
-            
-        </div>
-
         <div class="details-container">
             <table class="details-table">
                 <thead>
                     <tr>
-                        <th>Roll No</th>
-                        <th>Username</th>
-                        <th>Status / Details</th>
+                        <th>Staff Code</th>
+                        <th>Name</th>
+                        <th>Department</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -133,7 +82,7 @@
         const mockODReasons = ["Sports Event", "Hackathon", "Medical", "Paper Presentation", "Cultural Fest"];
 
         // Dummy functions to prevent console errors from the onchange attributes
-        function onProgramChange() {}
+        // function onProgramChange() {}
         function onFilterChange() {}
         function randomizeStats() {}
 
@@ -146,12 +95,12 @@
             const year = params.get('year') || "All Years";
             
             // Set Filter Values
-            document.getElementById('program-select').value = program;
-            document.getElementById('department-select').value = dept;
-            document.getElementById('year-select').value = year;
+            // document.getElementById('program-select').value = program;
+            // document.getElementById('department-select').value = dept;
+            // document.getElementById('year-select').value = year;
 
             // Set Page Title
-            document.getElementById('page-title').innerText = `${type} Students (${count})`;
+            document.getElementById('page-title').innerText = `${type} Staff (${count})`;
             
             // Generate mock rows
             const tbody = document.getElementById('table-body');
