@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Year Overview - Attendance</title>
+    <title>Section Overview - Attendance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="attendance.css">
     <link rel="stylesheet" href="student-attendance.css">
@@ -21,14 +21,16 @@
             <span class="separator mx-2">/</span>
             <a href="#" id="bc-type" class="back-link hover:text-blue-600 transition-colors">Departments</a>
             <span class="separator mx-2">/</span>
-            <span class="active-path text-slate-800 font-semibold" id="bc-dept">Dept</span>
+            <a href="#" id="bc-dept" class="back-link hover:text-blue-600 transition-colors">Dept</a>
+            <span class="separator mx-2">/</span>
+            <span class="active-path text-slate-800 font-semibold" id="bc-year">Year</span>
         </nav>
 
         <div class="flex justify-between items-center mb-8 border-b-2 border-slate-200 pb-4">
-            <h1 class="text-2xl font-bold text-slate-800" id="page-title">Year Overview</h1>
+            <h1 class="text-2xl font-bold text-slate-800" id="page-title">Section Overview</h1>
         </div>
 
-        <div class="box-grid" id="year-cards-container">
+        <div class="box-grid" id="section-cards-container">
             <!-- Dynamically populated via JS -->
         </div>
 
@@ -62,8 +64,9 @@
             const params = new URLSearchParams(window.location.search);
             const type = params.get('type') || "UG";
             const dept = params.get('dept') || "Dept";
+            const year = params.get('year') || "Year";
 
-            document.getElementById('page-title').innerText = `${dept} - Year Overview`;
+            document.getElementById('page-title').innerText = `${dept} - ${year} Sections`;
             document.getElementById('bc-type').innerText = `${type} Departments`;
             
             // Set correct back link for the department type
@@ -73,12 +76,10 @@
             
             document.getElementById('bc-type').href = backLink;
             document.getElementById('bc-dept').innerText = dept;
+            document.getElementById('bc-dept').href = `year-overview.html?type=${type}&dept=${dept}`;
+            document.getElementById('bc-year').innerText = year;
 
-            let numYears = 4;
-            if (type === 'PG') numYears = 2;
-            if (type === 'Scholar') numYears = 3;
-
-            const container = document.getElementById('year-cards-container');
+            const container = document.getElementById('section-cards-container');
             let html = '';
 
             const icons = {
@@ -97,32 +98,32 @@
                 'Scholar': 'text-cyan-500'
             };
 
-            for (let i = 1; i <= numYears; i++) {
-                let yearStr = i === 1 ? "1st Year" : i === 2 ? "2nd Year" : i === 3 ? "3rd Year" : "4th Year";
-                let total = Math.floor(Math.random() * 50) + 50; // Random total 50-100
-                let absentees = Math.floor(Math.random() * 10);
-                let ods = Math.floor(Math.random() * 5);
+            const sections = ['A', 'B', 'C'];
+
+            sections.forEach(sec => {
+                let total = Math.floor(Math.random() * 20) + 30; // Random total 30-50 per section
+                let absentees = Math.floor(Math.random() * 5);
+                let ods = Math.floor(Math.random() * 3);
                 let present = total - absentees - ods;
 
                 html += `
-                    <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='section-overview.html?type=${type}&dept=${dept}&year=${yearStr}'">
+                    <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='student-details.html?type=${type}&dept=${dept}&year=${year}&section=Section ${sec}'">
                         <div class="flex-1 flex flex-col">
                             <div class="mb-4 pb-4 border-b border-slate-100">
-                        <div class="flex flex-row items-center justify-between">
-                            <div class="flex justify-between w-full items-center gap-3">
-                                <div>
-                                    <span class="icon-container ${iconClass[type] || iconClass['UG']}"><i
-                                            class="mdi ${icons[type] || icons['UG']}"></i></span>
-                                    <span class="text-lg font-semibold text-slate-700">${yearStr}</span>
-                                </div>
-                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
-                                    <p>${total}
-                                        </p>
-                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                <div class="flex flex-row items-center justify-between">
+                                    <div class="flex justify-between w-full items-center gap-3">
+                                        <div>
+                                            <span class="icon-container ${iconClass[type] || iconClass['UG']}"><i
+                                                    class="mdi ${icons[type] || icons['UG']}"></i></span>
+                                            <span class="text-lg font-semibold text-slate-700">Section ${sec}</span>
+                                        </div>
+                                        <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                            <p>${total}</p>
+                                            <p class="text-[10px] uppercase text-slate-500">total</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                             <div class="flex justify-between items-end mb-4">
                                 <div>
                                     <div class="text-5xl font-bold ${textColor[type] || textColor['UG']} leading-none">${present}</div>
@@ -142,53 +143,47 @@
                         </div>
                     </div>
                 `;
-            }
+            });
 
             container.innerHTML = html;
 
-            // Generate Timetable for Sections A and B
+            // Generate Timetable for Sections
             const tbody = document.getElementById('timetable-body');
             tbody.innerHTML = '';
-            const sections = ['(A)', '(B)'];
 
-            for (let i = 1; i <= numYears; i++) {
-                let yearStr = i === 1 ? "1st Year" : i === 2 ? "2nd Year" : i === 3 ? "3rd Year" : "4th Year";
+            sections.forEach(sec => {
+                const className = `Section ${sec}`;
+                const tr = document.createElement('tr');
+                const nameTd = document.createElement('td');
+                nameTd.style.fontWeight = '600';
+                nameTd.innerText = className;
+                tr.appendChild(nameTd);
                 
-                sections.forEach(sec => {
-                    const className = `${yearStr} ${sec}`;
-                    const tr = document.createElement('tr');
-                    const nameTd = document.createElement('td');
-                    nameTd.style.fontWeight = '600';
-                    nameTd.innerText = className;
-                    tr.appendChild(nameTd);
+                for (let j = 0; j < 8; j++) {
+                    const td = document.createElement('td');
+                    const span = document.createElement('span');
+                    span.className = 'tt-val';
                     
-                    for (let j = 0; j < 8; j++) {
-                        const td = document.createElement('td');
-                        const span = document.createElement('span');
-                        span.className = 'tt-val';
-                        
-                        let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65;
-                        span.innerText = randomPercent + "%";
-                        
-                        if (randomPercent >= 85) {
-                            span.classList.add('bg-light-green');
-                        } else if (randomPercent >= 75) {
-                            span.classList.add('bg-light-yellow');
-                        } else {
-                            span.classList.add('bg-light-red');
-                        }
-                        
-                        span.onclick = () => {
-                            let cleanSec = sec.replace(/[()]/g, '');
-                            window.location.href = `student-details.html?type=${type}&dept=${dept}&year=${yearStr}&section=Section ${cleanSec}`;
-                        };
-                        
-                        td.appendChild(span);
-                        tr.appendChild(td);
+                    let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65;
+                    span.innerText = randomPercent + "%";
+                    
+                    if (randomPercent >= 85) {
+                        span.classList.add('bg-light-green');
+                    } else if (randomPercent >= 75) {
+                        span.classList.add('bg-light-yellow');
+                    } else {
+                        span.classList.add('bg-light-red');
                     }
-                    tbody.appendChild(tr);
-                });
-            }
+                    
+                    span.onclick = () => {
+                        window.location.href = `student-details.html?type=${type}&dept=${dept}&year=${year}&section=Section ${sec}`;
+                    };
+                    
+                    td.appendChild(span);
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            });
 
         });
     </script>

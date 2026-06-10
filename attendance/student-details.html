@@ -3,113 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Details</title>
+    <title>Student Details - Attendance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="attendance.css">
     <link rel="stylesheet" href="student-attendance.css">
     <link rel="stylesheet" href="../dist/output.css">
     <style>
         .details-container {
-            background: #ffffff;
+            background-color: #ffffff;
             border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            margin-top: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f1f5f9;
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
+
         .details-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1.5rem;
         }
-        .details-table th, .details-table td {
-            padding: 1.25rem 1rem;
+
+        .details-table th,
+        .details-table td {
+            padding: 1rem 1.5rem;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #f1f5f9;
         }
+
         .details-table th {
-            background: #f8fafc;
-            color: #64748b;
+            background-color: #f8fafc;
             font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
         }
+
+        .details-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+        
         .details-table tbody tr:hover td {
-            background: #f8fafc;
+            color: #334155;
         }
+
         .status-badge {
-            background-color: #f1f5f9;
-            color: #475569;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
         }
     </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
 
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="../index.html" class="back-link">Dashboard</a> 
-            <span class="separator">/</span> 
-            <a href="student-attendance.html" class="back-link">Student Attendance</a>
-            <span class="separator">/</span> 
-            <span class="active-path">Details</span>
+    <div class="container mx-auto p-6 max-w-7xl">
+        <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
+            <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a> 
+            <span class="separator mx-2">/</span> 
+            <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student Attendance</a>
+            <span class="separator mx-2">/</span> 
+            <span class="active-path text-slate-800 font-semibold">Details</span>
         </nav>
 
-        <h1 class="main-title" id="page-title">Student Details</h1>
+        <h1 class="text-2xl font-bold text-slate-800 mb-6" id="page-title">Student Details</h1>
 
-        <div class="filter-panel">
-            
-            <div class="filter-group">
-                <label>Program</label>
-                <select id="program-select" onchange="onProgramChange()">
-                    <option value="">All Programs</option>
-                    <option value="UG">UG</option>
-                    <option value="PG">PG</option>
-                    <option value="Scholar">Scholar</option>
-                </select>
+        <!-- Stats Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-6">
+            <div class="box disabled cursor-not-allowed text-center py-6" style="min-height: auto;">
+                <div class="text-4xl font-bold text-emerald-600" id="stat-present">0</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
             </div>
-
-            <div class="filter-group">
-                <label>Department</label>
-                <select id="department-select" onchange="onFilterChange()">
-                    <option value="">All Departments</option>
-                    <option value="CS">CS</option>
-                    <option value="BS">BS</option>
-                    <option value="CE">CE</option>
-                    <option value="ME">ME</option>
-                    <option value="EE">EE</option>
-                    <option value="EC">EC</option>
-                    <option value="BM">BM</option>
-                    <option value="CH">CH</option>
-                    <option value="AD">AD</option>
-                    <option value="IT">IT</option>
-                    <option value="CB">CB</option>
-                    <option value="VL">VL</option>
-                    <option value="MBA">MBA</option>
-                    <option value="PHDSH">PHDSH</option>
-                </select>
+            <div class="box disabled cursor-not-allowed text-center py-6" style="min-height: auto;">
+                <div class="text-4xl font-bold text-rose-600" id="stat-absent">0</div>
+                <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Absentees</div>
             </div>
-
-            <div class="filter-group">
-                <label>Academic Year</label>
-                <select id="year-select" onchange="onFilterChange()">
-                    <option value="All Years">All Years</option>
-                    <option value="1st Year">1st Year</option>
-                    <option value="2nd Year">2nd Year</option>
-                    <option value="3rd Year">3rd Year</option>
-                    <option value="4th Year">4th Year</option>
-                </select>
+            <div class="box disabled cursor-not-allowed text-center py-6" style="min-height: auto;">
+                <div class="text-4xl font-bold text-orange-600" id="stat-od">0</div>
+                <div class="text-xs font-bold text-orange-500 uppercase tracking-wide mt-2">ODs</div>
             </div>
-
-            <div class="filter-group" id="dynamic-date-wrapper">
-                <label id="date-label">Select Date</label>
-                <input type="date" id="date-input" onchange="randomizeStats()">
-            </div>
-            
         </div>
 
         <div class="details-container">
@@ -117,8 +89,8 @@
                 <thead>
                     <tr>
                         <th>Roll No</th>
-                        <th>Username</th>
-                        <th>Status / Details</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -129,32 +101,20 @@
     </div>
 
     <script>
-        const mockNames = ["Aarav Patel", "Vihaan Singh", "Vivaan Sharma", "Ananya Gupta", "Diya Kumar", "Ishaan Verma", "Kavya Reddy"];
-        const mockODReasons = ["Sports Event", "Hackathon", "Medical", "Paper Presentation", "Cultural Fest"];
-
-        // Dummy functions to prevent console errors from the onchange attributes
-        function onProgramChange() {}
-        function onFilterChange() {}
-        function randomizeStats() {}
-
+        const mockNames = ["Aarav Patel", "Vihaan Singh", "Vivaan Sharma", "Ananya Gupta", "Diya Kumar", "Ishaan Verma", "Kavya Reddy", "Rohan Mehta", "Sanya Iyer", "Arjun Nair"];
+        
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const type = params.get('type') || "Unknown";
-            const count = parseInt(params.get('count')) || 0;
-            const program = params.get('program') || "UG";
             const dept = params.get('dept');
             const year = params.get('year') || "All Years";
-            
-            // Set Filter Values
-            document.getElementById('program-select').value = program;
-            if (dept) document.getElementById('department-select').value = dept;
-            document.getElementById('year-select').value = year;
+            const section = params.get('section') || "";
 
             // Set Page Title
-            if (dept && year !== "All Years") {
-                document.getElementById('page-title').innerText = `${dept} - ${year} Details`;
+            if (dept && section) {
+                document.getElementById('page-title').innerText = `${dept} - ${year} - ${section} Details`;
             } else {
-                document.getElementById('page-title').innerText = `${type} Students (${count})`;
+                document.getElementById('page-title').innerText = `Student Details`;
             }
 
             // Dynamic Continuous Breadcrumb
@@ -174,38 +134,52 @@
                     <span class="separator mx-2">/</span>
                     <a href="year-overview.html?type=${type}&dept=${dept}" class="back-link hover:text-blue-600 transition-colors">${dept}</a>
                     <span class="separator mx-2">/</span>
-                    <span class="active-path text-slate-800 font-semibold">${year} Details</span>
+                    <a href="section-overview.html?type=${type}&dept=${dept}&year=${year}" class="back-link hover:text-blue-600 transition-colors">${year}</a>
+                    <span class="separator mx-2">/</span>
+                    <span class="active-path text-slate-800 font-semibold">${section} Details</span>
                 `;
             }
             
             // Generate mock rows
             const tbody = document.getElementById('table-body');
-            const numStudents = count > 50 ? 25 : count; // limit to 25 mock rows to not crash browser
+            const numStudents = 40; // generate 40 students for a section
             
-            if (numStudents === 0) {
-                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#94a3b8; padding: 2rem;">No data available.</td></tr>';
-                return;
-            }
+            let presentCount = 0;
+            let absentCount = 0;
+            let odCount = 0;
 
             for(let i=0; i<numStudents; i++) {
                 const tr = document.createElement('tr');
-                const rollNo = "21CS" + (Math.floor(Math.random() * 900) + 100);
+                const rollNo = "21" + (dept || "CS") + (Math.floor(Math.random() * 900) + 100);
                 const name = mockNames[Math.floor(Math.random() * mockNames.length)];
                 
-                let details = type;
-                if(type === 'OD' || type === 'On Duty') {
-                    details = "OD - " + mockODReasons[Math.floor(Math.random() * mockODReasons.length)];
-                } else if(type.includes('%')) {
-                    details = Math.random() > 0.5 ? 'Absent' : "OD - " + mockODReasons[Math.floor(Math.random() * mockODReasons.length)];
+                let rand = Math.random();
+                let status = 'Present';
+                let statusClass = 'bg-emerald-100 text-emerald-700';
+
+                if (rand > 0.85) {
+                    status = 'Absent';
+                    statusClass = 'bg-rose-100 text-rose-700';
+                    absentCount++;
+                } else if (rand > 0.75) {
+                    status = 'OD';
+                    statusClass = 'bg-orange-100 text-orange-700';
+                    odCount++;
+                } else {
+                    presentCount++;
                 }
                 
                 tr.innerHTML = `
                     <td style="font-family: monospace; font-weight: 600; color: #475569; font-size: 1.05rem;">${rollNo}</td>
                     <td style="font-weight: 500; color: #0f172a; font-size: 1.05rem;">${name}</td>
-                    <td><span class="status-badge">${details}</span></td>
+                    <td><span class="status-badge ${statusClass}" style="padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;">${status}</span></td>
                 `;
                 tbody.appendChild(tr);
             }
+
+            document.getElementById('stat-present').innerText = presentCount;
+            document.getElementById('stat-absent').innerText = absentCount;
+            document.getElementById('stat-od').innerText = odCount;
         });
     </script>
 </body>
