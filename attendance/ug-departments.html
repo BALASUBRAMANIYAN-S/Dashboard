@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 </head>
+
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
 
     <div class="container mx-auto p-6 max-w-7xl">
@@ -17,7 +19,8 @@
         <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
             <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
             <span class="separator mx-2">/</span>
-            <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student Attendance</a>
+            <a href="student-attendance.html" class="back-link hover:text-blue-600 transition-colors">Student
+                Attendance</a>
             <span class="separator mx-2">/</span>
             <span class="active-path text-slate-800 font-semibold">UG Departments</span>
         </nav>
@@ -28,18 +31,21 @@
 
         <div class="box-grid">
             <!-- CSE -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=CSE'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=CSE'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">CSE</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">250
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">CSE</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>250</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,28 +59,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- IT -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=IT'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=IT'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">IT</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">195
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">IT</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>195</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,28 +98,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- ECE -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=ECE'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=ECE'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">ECE</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">200
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">ECE</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>200</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,28 +137,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- EE -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=EE'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=EE'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">EE</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">130
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">EE</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>130</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,28 +176,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- ME -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=ME'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=ME'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">ME</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">160
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">ME</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>160</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -193,28 +215,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- CE -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=CE'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=CE'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">CE</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">120
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">CE</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>120</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,28 +254,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- BM -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=BM'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=BM'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">BM</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">90
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">BM</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>90</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -263,28 +293,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- AD -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=AD'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=AD'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">AD</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">140
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">AD</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>140</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -298,28 +332,32 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
 
             <!-- CB -->
-            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;" onclick="window.location.href='year-overview.html?type=UG&dept=CB'">
+            <div class="box cursor-pointer hover:shadow-lg transition-shadow" style="min-height: 230px;"
+                onclick="window.location.href='year-overview.html?type=UG&dept=CB'">
                 <div class="flex-1 flex flex-col">
                     <div class="mb-4 pb-4 border-b border-slate-100">
                         <div class="flex flex-row items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-domain"></i></span>
-                                <span class="text-lg font-semibold text-slate-700">CB</span>
-                            </div>
-                        </div>
-                        <div class="text-right mt-2">
-                            <div class="text-[15px] gap-1 font-medium text-gray-800">105
-                                <p class="text-[10px] uppercase text-slate-500">total</p>
+                            <div class="flex justify-between w-full items-center gap-3">
+                                <div>
+                                    <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                            class="mdi mdi-domain"></i></span>
+                                    <span class="text-lg font-semibold text-slate-700">CB</span>
+                                </div>
+                                <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                    <p>105</p>
+                                    <p class="text-[10px] uppercase text-slate-500">total</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -333,11 +371,12 @@
                 <div class="grid grid-cols-2 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-rose-600 leading-none">8</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">Absentees</span>
                     </div>
                     <div class="flex flex-col items-center justify-center px-2 py-2">
                         <span class="text-2xl font-bold text-orange-600 leading-none">2</span>
-                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-2">ODs</span>
+                        <span class="text-[10px] font-bold text-orange-500 uppercase tracking-wider mt-2">ODs</span>
                     </div>
                 </div>
             </div>
@@ -370,7 +409,7 @@
 
     <script>
         const depts = ['CS', 'BS', 'CE', 'ME', 'EE', 'EC', 'BM', 'CH', 'AD', 'IT'];
-        
+
         function generateTimetable() {
             const tbody = document.getElementById('timetable-body');
             tbody.innerHTML = '';
@@ -380,15 +419,15 @@
                 nameTd.style.fontWeight = '600';
                 nameTd.innerText = d;
                 tr.appendChild(nameTd);
-                
+
                 for (let i = 0; i < 8; i++) {
                     const td = document.createElement('td');
                     const span = document.createElement('span');
                     span.className = 'tt-val';
-                    
+
                     let randomPercent = Math.floor(Math.random() * (100 - 65 + 1)) + 65;
                     span.innerText = randomPercent + "%";
-                    
+
                     if (randomPercent >= 85) {
                         span.classList.add('bg-light-green');
                     } else if (randomPercent >= 75) {
@@ -396,11 +435,11 @@
                     } else {
                         span.classList.add('bg-light-red');
                     }
-                    
+
                     span.onclick = () => {
                         window.location.href = 'student-details.html?dept=' + d;
                     };
-                    
+
                     td.appendChild(span);
                     tr.appendChild(td);
                 }
