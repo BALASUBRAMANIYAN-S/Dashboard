@@ -12,13 +12,13 @@
 </head>
 
 <body>
+    <nav class="fixed-navbar">
+        <h1 class="navbar-title">Overall Dashboard</h1>
+        <button class="settings-btn" onclick="openSettings()">
+            <span><i class="mdi mdi-cog"></i> Settings</span>
+        </button>
+    </nav>
     <div id="main-dashboard" class="container">
-        <div class="dashboard-header">
-            <h1 class="main-title">Overall Dashboard</h1>
-            <button class="settings-btn" onclick="openSettings()">
-                <span><i class="mdi mdi-cog"></i> Settings</span>
-            </button>
-        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-2">
             <!-- Student Attendance -->
             <div class="box animate-fade-in-up delay-100" data-widget-id="student-attendance">
