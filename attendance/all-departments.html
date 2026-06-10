@@ -26,32 +26,137 @@
             <h1 class="text-2xl font-bold text-slate-800">All Departments Overview</h1>
         </div>
 
-        <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
             <!-- Example All Depts -->
-            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?dept=CSE'">
-                <div class="text-2xl font-bold text-blue-600 mb-1">255</div>
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">CSE</div>
-            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-1 transition-all" style="min-height: 130px;" onclick="window.location.href='student-details.html?dept=CSE'">
+    <!-- Top row: Dept & Total -->
+    <div class="flex justify-between items-start mb-2">
+        <span class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">CSE</span>
+        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">265 Total</span>
+    </div>
+    
+    <!-- Middle: Present -->
+    <div class="flex items-baseline gap-1.5 mb-3">
+        <span class="text-3xl font-black text-blue-600 tracking-tight leading-none">255</span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Present</span>
+    </div>
+    
+    <!-- Bottom row: Absentees & OD -->
+    <div class="flex justify-between mt-auto pt-3 border-t border-slate-100">
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-rose-500 leading-none">8</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Abs</span>
+        </div>
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-bold text-orange-500 leading-none">2</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">OD</span>
+        </div>
+    </div>
+</div>
             
-            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?dept=IT'">
-                <div class="text-2xl font-bold text-blue-600 mb-1">185</div>
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">IT</div>
-            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-1 transition-all" style="min-height: 130px;" onclick="window.location.href='student-details.html?dept=IT'">
+    <!-- Top row: Dept & Total -->
+    <div class="flex justify-between items-start mb-2">
+        <span class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">IT</span>
+        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">195 Total</span>
+    </div>
+    
+    <!-- Middle: Present -->
+    <div class="flex items-baseline gap-1.5 mb-3">
+        <span class="text-3xl font-black text-blue-600 tracking-tight leading-none">185</span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Present</span>
+    </div>
+    
+    <!-- Bottom row: Absentees & OD -->
+    <div class="flex justify-between mt-auto pt-3 border-t border-slate-100">
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-rose-500 leading-none">8</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Abs</span>
+        </div>
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-bold text-orange-500 leading-none">2</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">OD</span>
+        </div>
+    </div>
+</div>
 
-            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?dept=ECE'">
-                <div class="text-2xl font-bold text-blue-600 mb-1">190</div>
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">ECE</div>
-            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-1 transition-all" style="min-height: 130px;" onclick="window.location.href='student-details.html?dept=ECE'">
+    <!-- Top row: Dept & Total -->
+    <div class="flex justify-between items-start mb-2">
+        <span class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">ECE</span>
+        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">200 Total</span>
+    </div>
+    
+    <!-- Middle: Present -->
+    <div class="flex items-baseline gap-1.5 mb-3">
+        <span class="text-3xl font-black text-blue-600 tracking-tight leading-none">190</span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Present</span>
+    </div>
+    
+    <!-- Bottom row: Absentees & OD -->
+    <div class="flex justify-between mt-auto pt-3 border-t border-slate-100">
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-rose-500 leading-none">8</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Abs</span>
+        </div>
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-bold text-orange-500 leading-none">2</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">OD</span>
+        </div>
+    </div>
+</div>
 
-            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?dept=MBA'">
-                <div class="text-2xl font-bold text-blue-600 mb-1">120</div>
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">MBA</div>
-            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-1 transition-all" style="min-height: 130px;" onclick="window.location.href='student-details.html?dept=MBA'">
+    <!-- Top row: Dept & Total -->
+    <div class="flex justify-between items-start mb-2">
+        <span class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">MBA</span>
+        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">130 Total</span>
+    </div>
+    
+    <!-- Middle: Present -->
+    <div class="flex items-baseline gap-1.5 mb-3">
+        <span class="text-3xl font-black text-blue-600 tracking-tight leading-none">120</span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Present</span>
+    </div>
+    
+    <!-- Bottom row: Absentees & OD -->
+    <div class="flex justify-between mt-auto pt-3 border-t border-slate-100">
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-rose-500 leading-none">8</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Abs</span>
+        </div>
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-bold text-orange-500 leading-none">2</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">OD</span>
+        </div>
+    </div>
+</div>
             
-            <div class="box bg-white border border-slate-200 rounded-lg p-3 py-4 flex flex-col items-center justify-center cursor-pointer shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all" style="min-height: 80px;" onclick="window.location.href='student-details.html?dept=PHDSH'">
-                <div class="text-2xl font-bold text-blue-600 mb-1">25</div>
-                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">PHDSH</div>
-            </div>
+            <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-1 transition-all" style="min-height: 130px;" onclick="window.location.href='student-details.html?dept=PHDSH'">
+    <!-- Top row: Dept & Total -->
+    <div class="flex justify-between items-start mb-2">
+        <span class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">PHDSH</span>
+        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">35 Total</span>
+    </div>
+    
+    <!-- Middle: Present -->
+    <div class="flex items-baseline gap-1.5 mb-3">
+        <span class="text-3xl font-black text-blue-600 tracking-tight leading-none">25</span>
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Present</span>
+    </div>
+    
+    <!-- Bottom row: Absentees & OD -->
+    <div class="flex justify-between mt-auto pt-3 border-t border-slate-100">
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-rose-500 leading-none">8</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">Abs</span>
+        </div>
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-bold text-orange-500 leading-none">2</span>
+            <span class="text-[9px] text-slate-400 font-bold uppercase mt-1 tracking-wider">OD</span>
+        </div>
+    </div>
+</div>
         </div>
 
         <!-- Timetable Bottom -->
