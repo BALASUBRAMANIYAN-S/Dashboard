@@ -62,6 +62,7 @@
             <a href="../index.html" class="back-link">Dashboard</a> 
             <span class="separator">/</span> 
             <a href="staff-attendance.html" class="back-link">Staff Attendance</a>
+            <span id="breadcrumb-middle"></span>
             <span class="separator">/</span> 
             <span class="active-path">Details</span>
         </nav>
@@ -74,7 +75,7 @@
                     <tr>
                         <th>Staff Code</th>
                         <th>Name</th>
-                        <th>Department</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
@@ -95,43 +96,46 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            const type = params.get('type') || "Unknown";
-            const count = parseInt(params.get('count')) || 0;
-            const program = params.get('program') || "UG";
-            const dept = params.get('dept') || "CS";
-            const year = params.get('year') || "All Years";
+            const type = params.get('type') || "Staff";
+            const countParam = params.get('count');
+            const dept = params.get('dept') || "All";
+            let count = countParam ? parseInt(countParam) : 40; // Default to 40 if coming from department
             
-            // Set Filter Values
-            // document.getElementById('program-select').value = program;
-            // document.getElementById('department-select').value = dept;
-            // document.getElementById('year-select').value = year;
-
-            // Set Page Title
-            document.getElementById('page-title').innerText = `${type} Staff (${count})`;
+            // Set Page Title and Breadcrumb
+            if (countParam === null) {
+                 document.getElementById('page-title').innerText = `${dept} Department - ${type} Staff`;
+                 document.getElementById('breadcrumb-middle').innerHTML = `<span class="separator">/</span> <a href="staff-departments.html?type=${encodeURIComponent(type)}" class="back-link">${type} Departments</a>`;
+            } else {
+                 document.getElementById('page-title').innerText = `${type} Staff (${count})`;
+            }
             
             // Generate mock rows
             const tbody = document.getElementById('table-body');
-            const numStudents = count > 50 ? 25 : count; // limit to 25 mock rows to not crash browser
+            const numStaff = count > 50 ? 25 : count; // limit mock rows
             
-            if (numStudents === 0) {
+            if (numStaff === 0) {
                 tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#94a3b8; padding: 2rem;">No data available.</td></tr>';
                 return;
             }
 
-            for(let i=0; i<numStudents; i++) {
+            const mockStatuses = ["Present", "Present", "Present", "Vacation", "CL", "Comp", "LOB"];
+
+            for(let i=0; i<numStaff; i++) {
                 const tr = document.createElement('tr');
-                const rollNo = "21CS" + (Math.floor(Math.random() * 900) + 100);
+                const empId = "EMP" + (Math.floor(Math.random() * 9000) + 1000);
                 const name = mockNames[Math.floor(Math.random() * mockNames.length)];
                 
-                let details = type;
-                if(type === 'OD' || type === 'On Duty') {
-                    details = "OD - " + mockODReasons[Math.floor(Math.random() * mockODReasons.length)];
-                } else if(type.includes('%')) {
-                    details = Math.random() > 0.5 ? 'Absent' : "OD - " + mockODReasons[Math.floor(Math.random() * mockODReasons.length)];
+                let details = '';
+                if (countParam === null) {
+                    // Coming from department click - random status
+                    details = mockStatuses[Math.floor(Math.random() * mockStatuses.length)];
+                } else {
+                    // Coming from specific demographic stat
+                    details = type.replace('Total ', '').replace('Teaching ', '').replace('Non-Teaching ', '');
                 }
                 
                 tr.innerHTML = `
-                    <td style="font-family: monospace; font-weight: 600; color: #475569; font-size: 1.05rem;">${rollNo}</td>
+                    <td style="font-family: monospace; font-weight: 600; color: #475569; font-size: 1.05rem;">${empId}</td>
                     <td style="font-weight: 500; color: #0f172a; font-size: 1.05rem;">${name}</td>
                     <td><span class="status-badge">${details}</span></td>
                 `;
