@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Departments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="attendance.css">
+    <link rel="stylesheet" href="student-attendance.css">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+    <nav class="fixed-navbar">
+        <h1 class="navbar-title" id="page-title">Departments Overview</h1>
+        <div class="flex items-center gap-2">
+            <label for="nav-date-input" class="text-sm font-semibold text-slate-600">Date:</label>
+            <input type="date" id="nav-date-input" class="border border-slate-300 rounded p-1.5 text-sm outline-none focus:border-blue-500 text-slate-600 font-medium bg-white" onchange="generateData()">
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-6 max-w-7xl">
+
+        <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
+            <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
+            <span class="separator mx-2">/</span>
+            <a href="staff-attendance.html" class="back-link hover:text-blue-600 transition-colors">Staff
+                Attendance</a>
+            <span class="separator mx-2">/</span>
+            <span class="active-path text-slate-800 font-semibold" id="breadcrumb-title">Departments</span>
+        </nav>
+
+        <!-- Department Cards -->
+        <div class="box-grid" id="dept-grid">
+            <!-- Populated via JS -->
+        </div>
+
+        <!-- Table Bottom -->
+        <h2 style="font-size: 1.4rem; color: #1e293b; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600;">
+            Department Leave Summary</h2>
+        <div class="timetable-wrapper mb-10">
+            <table class="timetable">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Vacation</th>
+                        <th>CL</th>
+                        <th>Compoff</th>
+                        <th>LoP</th>
+                    </tr>
+                </thead>
+                <tbody id="dept-table-body">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const deptMap = {
+            'Teaching': ['CS', 'BS', 'CE', 'ME', 'EE', 'EC', 'BM', 'CH', 'AD', 'IT'],
+            'Non-Teaching': ['ITSIM', 'PrincipleOffice', 'AO team']
+        };
+
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                type: params.get('type') || 'Teaching'
+            };
+        }
+
+        function generateData() {
+            const params = getQueryParams();
+            const type = params.type;
+            const depts = deptMap[type] || deptMap['Teaching'];
+
+            document.getElementById('page-title').innerText = type + ' Departments Overview';
+            document.getElementById('breadcrumb-title').innerText = type + ' Departments';
+
+            const grid = document.getElementById('dept-grid');
+            const tbody = document.getElementById('dept-table-body');
+            
+            grid.innerHTML = '';
+            tbody.innerHTML = '';
+
+            depts.forEach(d => {
+                let baseStaff = type === 'Teaching' ? 40 : 50;
+                let dVac = Math.floor(Math.random() * 4);
+                let dCl = Math.floor(Math.random() * 3);
+                let dComp = Math.floor(Math.random() * 2);
+                let dLob = Math.floor(Math.random() * 2);
+                
+                let present = baseStaff - dVac - dCl - dComp - dLob;
+
+                // Card
+                const card = document.createElement('div');
+                card.className = 'box cursor-pointer hover:shadow-lg transition-shadow';
+                card.style.minHeight = '230px';
+                card.onclick = () => window.location.href = 'staff-details.html?dept=' + d + '&type=' + type;
+                
+                card.innerHTML = `
+                    <div class="flex-1 flex flex-col">
+                        <div class="mb-4 pb-4 border-b border-slate-100">
+                            <div class="flex flex-row items-center justify-between">
+                                <div class="flex justify-between w-full items-center gap-3">
+                                    <div>
+                                        <span class="icon-container bg-emerald-100 text-emerald-600"><i
+                                                class="mdi mdi-domain"></i></span>
+                                        <span class="text-lg font-semibold text-slate-700">${d}</span>
+                                    </div>
+                                    <div class="text-[15px] gap-1 flex items-center font-medium text-gray-800">
+                                        <p>${baseStaff}</p>
+                                        <p class="text-[10px] uppercase text-slate-500">total</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <div class="text-5xl font-bold text-emerald-500 leading-none">${present}</div>
+                                <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mt-2">Present</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-4 divide-x divide-slate-100 border-t border-slate-100 pt-2 mt-auto">
+                        <div class="flex flex-col items-center justify-center px-1 py-2">
+                            <span class="text-xl font-bold text-rose-600 leading-none">${dVac}</span>
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-2">Vacation</span>
+                        </div>
+                        <div class="flex flex-col items-center justify-center px-1 py-2">
+                            <span class="text-xl font-bold text-orange-500 leading-none">${dCl}</span>
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-2">CL</span>
+                        </div>
+                        <div class="flex flex-col items-center justify-center px-1 py-2">
+                            <span class="text-xl font-bold text-amber-500 leading-none">${dComp}</span>
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-2">Comp</span>
+                        </div>
+                        <div class="flex flex-col items-center justify-center px-1 py-2">
+                            <span class="text-xl font-bold text-red-500 leading-none">${dLob}</span>
+                            <span class="text-[9px] font-bold text-slate-500 uppercase tracking-wider mt-2">LOB</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                // Table row
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight: 600;">${d}</td>
+                    <td><span class="tt-val ${dVac > 0 ? 'bg-light-red' : 'bg-light-green'}">${dVac}</span></td>
+                    <td><span class="tt-val ${dCl > 0 ? 'bg-light-yellow' : 'bg-light-green'}">${dCl}</span></td>
+                    <td><span class="tt-val ${dComp > 0 ? 'bg-light-yellow' : 'bg-light-green'}">${dComp}</span></td>
+                    <td><span class="tt-val ${dLob > 0 ? 'bg-light-red' : 'bg-light-green'}">${dLob}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const navDateInput = document.getElementById('nav-date-input'); 
+            if(navDateInput) navDateInput.valueAsDate = new Date();
+            generateData();
+        });
+    </script>
+</body>
+
+</html>
