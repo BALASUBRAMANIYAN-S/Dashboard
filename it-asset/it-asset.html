@@ -11,10 +11,217 @@
     <link rel="stylesheet" href="it-asset.css">
     <link rel="stylesheet" href="../dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
+    <style>
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-pane.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-btn {
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+    <nav class="fixed-navbar">
+        <h1 class="navbar-title">IT Asset Management</h1>
+        <div class="flex items-center gap-2">
+            <label for="nav-date-input" class="text-sm font-semibold text-slate-600">Date:</label>
+            <input type="date" id="nav-date-input" class="border border-slate-300 rounded p-1.5 text-sm outline-none focus:border-blue-500 text-slate-600 font-medium bg-white">
+        </div>
+    </nav>
 
+    <div class="container mx-auto p-6 max-w-7xl">
+        <nav class="breadcrumb mb-6 flex items-center text-sm font-medium text-slate-500">
+            <a href="../index.html" class="back-link hover:text-blue-600 transition-colors">Dashboard</a>
+            <span class="separator mx-2">/</span>
+            <span class="active-path text-slate-800 font-semibold">IT Asset</span>
+        </nav>
+
+        <h1 class="main-title">IT Asset Inventory</h1>
+
+        <!-- Tabs -->
+        <div class="inline-flex gap-6 bg-slate-200/50 p-2 rounded-xl mb-8 overflow-x-auto w-full md:w-auto shadow-inner hide-scrollbar">
+            <button class="tab-btn active px-6 py-2.5 rounded-lg font-semibold text-sm transition-all whitespace-nowrap flex-1 md:flex-none text-center bg-white text-blue-600 shadow-sm ring-1 ring-slate-900/5" onclick="switchTab('tab1', this)">Network & Infrastructure</button>
+            <button class="tab-btn px-6 py-2.5 rounded-lg font-semibold text-sm text-slate-500 hover:text-slate-700 hover:bg-slate-200/50 transition-all whitespace-nowrap flex-1 md:flex-none text-center" onclick="switchTab('tab2', this)">Endpoint & Office Tech</button>
+            <button class="tab-btn px-6 py-2.5 rounded-lg font-semibold text-sm text-slate-500 hover:text-slate-700 hover:bg-slate-200/50 transition-all whitespace-nowrap flex-1 md:flex-none text-center" onclick="switchTab('tab3', this)">Security & Access</button>
+        </div>
+
+        <!-- Tab 1: Network & Infrastructure -->
+        <div id="tab1" class="tab-pane active">
+            <div class="box-grid">
+                <!-- Routers -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-indigo-100 text-indigo-600"><i class="mdi mdi-router-wireless"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Routers</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-indigo-500 leading-none mb-1">12</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Wi-Fi Access Points -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-cyan-100 text-cyan-600"><i class="mdi mdi-wifi"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Wi-Fi Access Points</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-cyan-500 leading-none mb-1">85</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Ethernet Switches -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-blue-100 text-blue-600"><i class="mdi mdi-lan-connect"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Ethernet Switches</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-blue-500 leading-none mb-1">24</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Ethernet PoE Switches -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-violet-100 text-violet-600"><i class="mdi mdi-power-plug-outline"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Ethernet PoE Switches</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-violet-500 leading-none mb-1">16</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Endpoint & Office Tech -->
+        <div id="tab2" class="tab-pane">
+            <div class="box-grid">
+                <!-- Desktop Computers -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-emerald-100 text-emerald-600"><i class="mdi mdi-desktop-tower-monitor"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Desktop Computers</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-emerald-500 leading-none mb-1">1200</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Printers -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-amber-100 text-amber-600"><i class="mdi mdi-printer"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Printers</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-amber-500 leading-none mb-1">45</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Scanners -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-orange-100 text-orange-600"><i class="mdi mdi-scanner"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Scanners</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-orange-500 leading-none mb-1">20</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Projectors -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-pink-100 text-pink-600"><i class="mdi mdi-projector"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Projectors</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-pink-500 leading-none mb-1">15</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- Barcode Scanners -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-rose-100 text-rose-600"><i class="mdi mdi-barcode-scan"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">Barcode Scanners</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-rose-500 leading-none mb-1">32</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Security & Access -->
+        <div id="tab3" class="tab-pane">
+            <div class="box-grid">
+                <!-- CCTV -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-red-100 text-red-600"><i class="mdi mdi-cctv"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">CCTV Cameras</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-red-500 leading-none mb-1">150</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+                <!-- BIO Metric Devices -->
+                <div class="box cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="icon-container bg-teal-100 text-teal-600"><i class="mdi mdi-fingerprint"></i></span>
+                        <span class="text-lg font-semibold text-slate-700">BIO Metric Devices</span>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="text-5xl font-bold text-teal-500 leading-none mb-1">40</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide">Total Units</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tabId, btnElement) {
+            // Hide all tabs
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            // Remove active state from all buttons
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('active', 'bg-white', 'text-blue-600', 'shadow-sm', 'ring-1', 'ring-slate-900/5');
+                btn.classList.add('text-slate-500', 'hover:text-slate-700', 'hover:bg-slate-200/50');
+            });
+
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active state to clicked button
+            btnElement.classList.add('active', 'bg-white', 'text-blue-600', 'shadow-sm', 'ring-1', 'ring-slate-900/5');
+            btnElement.classList.remove('text-slate-500', 'hover:text-slate-700', 'hover:bg-slate-200/50');
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const navDateInput = document.getElementById('nav-date-input'); 
+            if(navDateInput) navDateInput.valueAsDate = new Date();
+        });
+    </script>
 </body>
 
 </html>
